@@ -9,7 +9,7 @@ biggest = 0
 smallest = 0
 
 csvpath = os.path.join('budget_data.csv')
-output = os.path.join('output.txt')
+output = os.path.join('output','analysis.txt')
 
 with open(csvpath,newline='') as csvfile:
 	csvreader = csv.reader(csvfile,delimiter=',')
@@ -55,5 +55,14 @@ print(f"average: ${avg}")
 # greatest profit increase, date and amount
 print(f"greatest increase: {datemax} ({biggest})")
 
-# greatest profit decrease, date and amount
+# greatest loss decrease, date and amount
 print(f"greatest decrease: {datemin} ({smallest})")
+
+with open(output,'w') as text:
+	text.write("Financial Analysis" + "\n")
+	text.write("---------------------------------\n")
+	text.write("months: " + str(count) + "\n")
+	text.write("total: " + str(net) + "\n")
+	text.write("average: " + str(avg) + "\n")
+	text.write("greatest increase: " + str(datemax) + "(" + str(biggest) + ")" + "\n")
+	text.write("greatest decrease: " + str(datemin) + "(" + str(smallest) + ")")
