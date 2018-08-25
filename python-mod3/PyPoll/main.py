@@ -7,6 +7,7 @@ import numpy as np
 votes = 0
 arr = []
 biggest = 0
+tal = {}
 
 # declare paths for I/O data
 csvpath = os.path.join('election_data.csv')
@@ -29,6 +30,10 @@ with open(csvpath,newline='') as csvfile:
 candidates = np.unique(arr)
 
 for name in candidates:
+	# calculate percentages, load into dictionary
+	perc = '%.3f' % ((arr.count(name)/votes)*100)
+	tal[name] = ([perc,arr.count(name)])
+
 	# collect popular vote candidate
 	if arr.count(name) > biggest:
 		biggest = arr.count(name)
@@ -43,6 +48,7 @@ print(f"total votes: {votes}")
 print("---------------------------------")
 
 print(candidates)
+print(tal)
 
 # display winning candidate 
 print("---------------------------------")
