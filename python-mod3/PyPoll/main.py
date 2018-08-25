@@ -6,6 +6,7 @@ import numpy as np
 # initialize variables
 votes = 0
 arr = []
+biggest = 0
 
 # declare paths for I/O data
 csvpath = os.path.join('election_data.csv')
@@ -27,6 +28,12 @@ with open(csvpath,newline='') as csvfile:
 # select unique candidates
 candidates = np.unique(arr)
 
+for name in candidates:
+	# collect popular vote candidate
+	if arr.count(name) > biggest:
+		biggest = arr.count(name)
+		winner = name
+
 # print election results
 print("Election Results")
 print("---------------------------------")
@@ -36,3 +43,7 @@ print(f"total votes: {votes}")
 print("---------------------------------")
 
 print(candidates)
+
+# display winning candidate 
+print("---------------------------------")
+print(f"winner: {winner}")
