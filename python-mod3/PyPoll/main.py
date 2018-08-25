@@ -1,6 +1,7 @@
 # import modules
 import os
 import csv
+import numpy as np
 
 # initialize variables
 votes = 0
@@ -23,6 +24,9 @@ with open(csvpath,newline='') as csvfile:
 		# collect (last) names of all candidates
 		arr.append(str(row[2]))
 
+# select unique candidates
+candidates = np.unique(arr)
+
 # print election results
 print("Election Results")
 print("---------------------------------")
@@ -30,3 +34,5 @@ print("---------------------------------")
 # total number of votes cast
 print(f"total votes: {votes}")
 print("---------------------------------")
+
+print(candidates)
