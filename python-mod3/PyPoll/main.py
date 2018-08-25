@@ -54,3 +54,20 @@ for i in range(0,4):
 # display winning candidate 
 print("---------------------------------")
 print(f"winner: {winner}")
+
+# output results to textfile
+with open(output,'w') as text:
+	# print vote count to file
+	text.write("Election Results" + "\n")
+	text.write("---------------------------------\n")
+	text.write("total votes: " + str(votes) + "\n")
+	text.write("---------------------------------\n")
+
+	# print data per candidate to file
+	for i in range(0,4):
+		text.write(str(candidates[i]) + ": " + str(tal[candidates[i]][0]) + "% (" + str(tal[candidates[i]][1]) + ")" + "\n")
+	
+	# print winner to file
+	text.write("---------------------------------\n")
+	text.write("winner: " + str(winner) + "\n")
+	text.write("---------------------------------\n")
