@@ -47,8 +47,9 @@ print("---------------------------------")
 print(f"total votes: {votes}")
 print("---------------------------------")
 
-print(candidates)
-print(tal)
+# candidates with vote counts
+for i in range(0,4):
+	print(f"{candidates[i]}: {tal[candidates[i]][0]}% ({tal[candidates[i]][1]})")
 
 # display winning candidate 
 print("---------------------------------")
