@@ -1,0 +1,605 @@
+Beginning Data Retrieval
+-----------------------------
+Processing record 1 of Set 1 | Igarka
+Processing record 2 of Set 1 | Kavieng
+Processing record 3 of Set 1 | Krasnovishersk
+Processing record 4 of Set 1 | Klaksvik
+Processing record 5 of Set 1 | Rikitea
+Processing record 6 of Set 1 | Bluff
+City not found. Skipping...
+Processing record 8 of Set 1 | Lyubokhna
+Processing record 9 of Set 1 | Ilulissat
+Processing record 10 of Set 1 | Guerrero Negro
+Processing record 11 of Set 1 | Tuktoyaktuk
+Processing record 12 of Set 1 | Avarua
+Processing record 13 of Set 1 | Namibe
+Processing record 14 of Set 1 | Hovd
+Processing record 15 of Set 1 | Cabo San Lucas
+Processing record 16 of Set 1 | Mar del Plata
+Processing record 17 of Set 1 | Vila Franca do Campo
+City not found. Skipping...
+City not found. Skipping...
+Processing record 20 of Set 1 | Necochea
+Processing record 21 of Set 1 | Galle
+Processing record 22 of Set 1 | Cherskiy
+Processing record 23 of Set 1 | Tortoli
+Processing record 24 of Set 1 | Vaini
+Processing record 25 of Set 1 | Storsteinnes
+City not found. Skipping...
+Processing record 27 of Set 1 | Lebu
+Processing record 28 of Set 1 | Busselton
+Processing record 29 of Set 1 | Nikolskoye
+Processing record 30 of Set 1 | Souillac
+Processing record 31 of Set 1 | Bethel
+Processing record 32 of Set 1 | Arraial do Cabo
+Processing record 33 of Set 1 | Kapaa
+Processing record 34 of Set 1 | Nevelsk
+Processing record 35 of Set 1 | Bubaque
+Processing record 36 of Set 1 | Yellowknife
+City not found. Skipping...
+Processing record 38 of Set 1 | Ushuaia
+Processing record 39 of Set 1 | Broken Hill
+City not found. Skipping...
+Processing record 41 of Set 1 | Baruun-Urt
+City not found. Skipping...
+City not found. Skipping...
+Processing record 44 of Set 1 | Lazaro Cardenas
+Processing record 45 of Set 1 | Iqaluit
+Processing record 46 of Set 1 | Maceio
+City not found. Skipping...
+Processing record 48 of Set 1 | Ribeira Grande
+City not found. Skipping...
+Processing record 50 of Set 1 | Hermanus
+Processing record 1 of Set 2 | Kushima
+Processing record 2 of Set 2 | New Norfolk
+Processing record 3 of Set 2 | Komsomolskiy
+Processing record 4 of Set 2 | Carnarvon
+Processing record 5 of Set 2 | Cape Town
+Processing record 6 of Set 2 | Kalianget
+Processing record 7 of Set 2 | Albany
+Processing record 8 of Set 2 | Mbanza-Ngungu
+Processing record 9 of Set 2 | Hami
+Processing record 10 of Set 2 | Upernavik
+Processing record 11 of Set 2 | California City
+Processing record 12 of Set 2 | Launceston
+Processing record 13 of Set 2 | Bredasdorp
+Processing record 14 of Set 2 | Tiksi
+Processing record 15 of Set 2 | Shuangyang
+Processing record 16 of Set 2 | Lucapa
+Processing record 17 of Set 2 | Coahuayana
+Processing record 18 of Set 2 | Namatanai
+Processing record 19 of Set 2 | Weligama
+Processing record 20 of Set 2 | Tarko-Sale
+Processing record 21 of Set 2 | Verkhnyaya Inta
+Processing record 22 of Set 2 | Mishan
+Processing record 23 of Set 2 | Hithadhoo
+City not found. Skipping...
+Processing record 25 of Set 2 | Chipata
+Processing record 26 of Set 2 | Brod
+Processing record 27 of Set 2 | High Level
+City not found. Skipping...
+Processing record 29 of Set 2 | Chokurdakh
+Processing record 30 of Set 2 | Kodiak
+Processing record 31 of Set 2 | Vanimo
+Processing record 32 of Set 2 | Pindamonhangaba
+Processing record 33 of Set 2 | Provideniya
+City not found. Skipping...
+Processing record 35 of Set 2 | Ponta do Sol
+Processing record 36 of Set 2 | Kuldur
+Processing record 37 of Set 2 | Belaya Gora
+Processing record 38 of Set 2 | Lompoc
+Processing record 39 of Set 2 | Hobart
+Processing record 40 of Set 2 | Moose Jaw
+Processing record 41 of Set 2 | Coquimbo
+Processing record 42 of Set 2 | Punta Arenas
+Processing record 43 of Set 2 | Aklavik
+Processing record 44 of Set 2 | Terney
+Processing record 45 of Set 2 | Katangli
+Processing record 46 of Set 2 | Bambous Virieux
+City not found. Skipping...
+Processing record 48 of Set 2 | Trelew
+Processing record 49 of Set 2 | Qarqin
+City not found. Skipping...
+Processing record 1 of Set 3 | Tasiilaq
+Processing record 2 of Set 3 | Chuy
+Processing record 3 of Set 3 | Mareeba
+Processing record 4 of Set 3 | Coihaique
+Processing record 5 of Set 3 | Jamestown
+City not found. Skipping...
+Processing record 7 of Set 3 | Tandil
+City not found. Skipping...
+Processing record 9 of Set 3 | Yumen
+Processing record 10 of Set 3 | Salym
+Processing record 11 of Set 3 | Okha
+City not found. Skipping...
+Processing record 13 of Set 3 | Sobolevo
+Processing record 14 of Set 3 | Half Moon Bay
+Processing record 15 of Set 3 | Butaritari
+Processing record 16 of Set 3 | Tezu
+Processing record 17 of Set 3 | Qaanaaq
+Processing record 18 of Set 3 | Atuona
+Processing record 19 of Set 3 | Mogadishu
+Processing record 20 of Set 3 | Awbari
+Processing record 21 of Set 3 | Puerto Ayora
+Processing record 22 of Set 3 | Paamiut
+Processing record 23 of Set 3 | La Ronge
+City not found. Skipping...
+Processing record 25 of Set 3 | Dickinson
+Processing record 26 of Set 3 | Beauvais
+Processing record 27 of Set 3 | Port Alfred
+Processing record 28 of Set 3 | Cooma
+Processing record 29 of Set 3 | Lavrentiya
+City not found. Skipping...
+Processing record 31 of Set 3 | Jacareacanga
+Processing record 32 of Set 3 | Nago
+Processing record 33 of Set 3 | Georgetown
+Processing record 34 of Set 3 | Tual
+Processing record 35 of Set 3 | Mahebourg
+City not found. Skipping...
+Processing record 37 of Set 3 | Lapeer
+Processing record 38 of Set 3 | Longyearbyen
+Processing record 39 of Set 3 | Calama
+City not found. Skipping...
+Processing record 41 of Set 3 | Port Elizabeth
+Processing record 42 of Set 3 | Vila Velha
+Processing record 43 of Set 3 | Bonavista
+Processing record 44 of Set 3 | Isangel
+Processing record 45 of Set 3 | Leningradskiy
+Processing record 46 of Set 3 | Ximei
+Processing record 47 of Set 3 | Moree
+Processing record 48 of Set 3 | Dunedin
+Processing record 49 of Set 3 | Kaitangata
+Processing record 50 of Set 3 | Corpus Christi
+Processing record 1 of Set 4 | Portland
+Processing record 2 of Set 4 | Chiredzi
+Processing record 3 of Set 4 | Muros
+Processing record 4 of Set 4 | Hamilton
+Processing record 5 of Set 4 | Xiuyan
+Processing record 6 of Set 4 | Saskylakh
+Processing record 7 of Set 4 | Acapulco
+Processing record 8 of Set 4 | Cockburn Town
+Processing record 9 of Set 4 | Adrar
+Processing record 10 of Set 4 | Karla
+Processing record 11 of Set 4 | Svetlogorsk
+Processing record 12 of Set 4 | Cayenne
+Processing record 13 of Set 4 | Ahipara
+Processing record 14 of Set 4 | Huarmey
+Processing record 15 of Set 4 | Dikson
+Processing record 16 of Set 4 | Longavi
+Processing record 17 of Set 4 | Monterey
+Processing record 18 of Set 4 | Tautira
+Processing record 19 of Set 4 | Castro
+Processing record 20 of Set 4 | Mount Gambier
+Processing record 21 of Set 4 | Tocopilla
+Processing record 22 of Set 4 | Berlevag
+Processing record 23 of Set 4 | Praia da Vitoria
+Processing record 24 of Set 4 | Cidreira
+Processing record 25 of Set 4 | Manggar
+Processing record 26 of Set 4 | Tanout
+Processing record 27 of Set 4 | Hilo
+Processing record 28 of Set 4 | Tula
+Processing record 29 of Set 4 | Helena
+Processing record 30 of Set 4 | Lae
+Processing record 31 of Set 4 | Centralia
+Processing record 32 of Set 4 | Impfondo
+City not found. Skipping...
+Processing record 34 of Set 4 | Newport
+Processing record 35 of Set 4 | Tsuyama
+Processing record 36 of Set 4 | Bandarbeyla
+Processing record 37 of Set 4 | Oranjemund
+City not found. Skipping...
+Processing record 39 of Set 4 | Artigas
+Processing record 40 of Set 4 | Comodoro Rivadavia
+Processing record 41 of Set 4 | Najran
+Processing record 42 of Set 4 | Nelson Bay
+Processing record 43 of Set 4 | Clyde River
+Processing record 44 of Set 4 | Chenzhou
+Processing record 45 of Set 4 | Saldanha
+Processing record 46 of Set 4 | Bindki
+Processing record 47 of Set 4 | Tonneins
+Processing record 48 of Set 4 | Muriwai Beach
+Processing record 49 of Set 4 | Winsum
+Processing record 50 of Set 4 | Richards Bay
+City not found. Skipping...
+Processing record 2 of Set 5 | Faanui
+Processing record 3 of Set 5 | Gravdal
+Processing record 4 of Set 5 | Yulara
+City not found. Skipping...
+City not found. Skipping...
+Processing record 7 of Set 5 | Praia
+Processing record 8 of Set 5 | Nichinan
+Processing record 9 of Set 5 | Makakilo City
+Processing record 10 of Set 5 | Amapa
+Processing record 11 of Set 5 | Chateauroux
+Processing record 12 of Set 5 | Okahandja
+Processing record 13 of Set 5 | San Cristobal
+Processing record 14 of Set 5 | Esperance
+Processing record 15 of Set 5 | Chuguyevka
+Processing record 16 of Set 5 | Tura
+Processing record 17 of Set 5 | Grand Gaube
+Processing record 18 of Set 5 | Campo Maior
+Processing record 19 of Set 5 | Eyl
+Processing record 20 of Set 5 | Homer
+Processing record 21 of Set 5 | East London
+Processing record 22 of Set 5 | Camopi
+Processing record 23 of Set 5 | Norman Wells
+Processing record 24 of Set 5 | Saint-Francois
+City not found. Skipping...
+Processing record 26 of Set 5 | Minab
+City not found. Skipping...
+Processing record 28 of Set 5 | Peabiru
+Processing record 29 of Set 5 | Thompson
+Processing record 30 of Set 5 | Felipe Carrillo Puerto
+Processing record 31 of Set 5 | Port Shepstone
+Processing record 32 of Set 5 | Potam
+Processing record 33 of Set 5 | Mercedes
+Processing record 34 of Set 5 | General Roca
+Processing record 35 of Set 5 | Pauini
+Processing record 36 of Set 5 | Zhuhai
+City not found. Skipping...
+Processing record 38 of Set 5 | Barrow
+Processing record 39 of Set 5 | Katsuura
+Processing record 40 of Set 5 | Mackay
+Processing record 41 of Set 5 | Aykhal
+Processing record 42 of Set 5 | Port Blair
+Processing record 43 of Set 5 | Mecca
+Processing record 44 of Set 5 | Havoysund
+Processing record 45 of Set 5 | Poum
+Processing record 46 of Set 5 | Moerai
+Processing record 47 of Set 5 | Alugan
+Processing record 48 of Set 5 | Margate
+Processing record 49 of Set 5 | College
+Processing record 50 of Set 5 | Torbay
+City not found. Skipping...
+City not found. Skipping...
+Processing record 3 of Set 6 | Ulladulla
+Processing record 4 of Set 6 | Harindanga
+Processing record 5 of Set 6 | Sabang
+Processing record 6 of Set 6 | Ostrovnoy
+Processing record 7 of Set 6 | Ugoofaaru
+Processing record 8 of Set 6 | Edmond
+Processing record 9 of Set 6 | Sonoma
+City not found. Skipping...
+Processing record 11 of Set 6 | Cortez
+Processing record 12 of Set 6 | Sinop
+City not found. Skipping...
+Processing record 14 of Set 6 | Qaqortoq
+Processing record 15 of Set 6 | Newry
+Processing record 16 of Set 6 | Doka
+Processing record 17 of Set 6 | Ukholovo
+Processing record 18 of Set 6 | Srednekolymsk
+Processing record 19 of Set 6 | Nokaneng
+Processing record 20 of Set 6 | Semirom
+Processing record 21 of Set 6 | Saint-Augustin
+Processing record 22 of Set 6 | Maniitsoq
+Processing record 23 of Set 6 | Berdigestyakh
+Processing record 24 of Set 6 | Saint George
+Processing record 25 of Set 6 | Priladozhskiy
+Processing record 26 of Set 6 | Yablonovo
+Processing record 27 of Set 6 | Riihimaki
+Processing record 28 of Set 6 | Dongsheng
+City not found. Skipping...
+Processing record 30 of Set 6 | Borogontsy
+City not found. Skipping...
+Processing record 32 of Set 6 | Khatanga
+Processing record 33 of Set 6 | Mimongo
+Processing record 34 of Set 6 | Saint-Philippe
+Processing record 35 of Set 6 | Mathbaria
+Processing record 36 of Set 6 | Fortuna
+Processing record 37 of Set 6 | Riyadh
+Processing record 38 of Set 6 | Lodeynoye Pole
+Processing record 39 of Set 6 | Biharamulo
+Processing record 40 of Set 6 | Matay
+Processing record 41 of Set 6 | Seoul
+City not found. Skipping...
+Processing record 43 of Set 6 | Nanortalik
+Processing record 44 of Set 6 | Paita
+Processing record 45 of Set 6 | Aswan
+Processing record 46 of Set 6 | Marsa Matruh
+Processing record 47 of Set 6 | Cascais
+City not found. Skipping...
+Processing record 49 of Set 6 | Santa Fe
+Processing record 50 of Set 6 | Noshiro
+City not found. Skipping...
+City not found. Skipping...
+Processing record 3 of Set 7 | Vilhena
+Processing record 4 of Set 7 | Santa Cruz
+Processing record 5 of Set 7 | Inhambane
+Processing record 6 of Set 7 | San Andres
+Processing record 7 of Set 7 | Sangin
+Processing record 8 of Set 7 | Kulhudhuffushi
+Processing record 9 of Set 7 | Harper
+Processing record 10 of Set 7 | Imbituba
+Processing record 11 of Set 7 | Novonukutskiy
+Processing record 12 of Set 7 | Ahuimanu
+City not found. Skipping...
+Processing record 14 of Set 7 | Kashmor
+Processing record 15 of Set 7 | Toora-Khem
+Processing record 16 of Set 7 | Christchurch
+Processing record 17 of Set 7 | Pirdop
+Processing record 18 of Set 7 | Rocky Mountain House
+Processing record 19 of Set 7 | Lorengau
+Processing record 20 of Set 7 | Nantucket
+City not found. Skipping...
+Processing record 22 of Set 7 | Sioux Lookout
+Processing record 23 of Set 7 | Kudahuvadhoo
+Processing record 24 of Set 7 | Karratha
+Processing record 25 of Set 7 | Oni
+Processing record 26 of Set 7 | Sao Filipe
+Processing record 27 of Set 7 | Matelandia
+Processing record 28 of Set 7 | Quatre Cocos
+Processing record 29 of Set 7 | Henties Bay
+Processing record 30 of Set 7 | Luis Correia
+Processing record 31 of Set 7 | Zhigansk
+Processing record 32 of Set 7 | Riberalta
+Processing record 33 of Set 7 | Itororo
+Processing record 34 of Set 7 | Ivanivka
+Processing record 35 of Set 7 | Bathsheba
+Processing record 36 of Set 7 | Sisimiut
+Processing record 37 of Set 7 | Irpa Irpa
+City not found. Skipping...
+Processing record 39 of Set 7 | Tarakan
+City not found. Skipping...
+Processing record 41 of Set 7 | Liverpool
+Processing record 42 of Set 7 | Lagoa
+Processing record 43 of Set 7 | Oster
+Processing record 44 of Set 7 | Kruisfontein
+City not found. Skipping...
+City not found. Skipping...
+Processing record 47 of Set 7 | Roma
+City not found. Skipping...
+Processing record 49 of Set 7 | Great Bend
+Processing record 50 of Set 7 | Riachao
+Processing record 1 of Set 8 | Cobija
+Processing record 2 of Set 8 | Borovikha
+Processing record 3 of Set 8 | Talnakh
+Processing record 4 of Set 8 | Pevek
+Processing record 5 of Set 8 | Naustdal
+Processing record 6 of Set 8 | Usinsk
+Processing record 7 of Set 8 | Metro
+Processing record 8 of Set 8 | Ganzhou
+City not found. Skipping...
+Processing record 10 of Set 8 | Felanitx
+Processing record 11 of Set 8 | Okhotsk
+Processing record 12 of Set 8 | Swan Hill
+Processing record 13 of Set 8 | Lopsmarka
+Processing record 14 of Set 8 | Ancud
+Processing record 15 of Set 8 | Yarada
+Processing record 16 of Set 8 | Vardo
+Processing record 17 of Set 8 | Tromso
+City not found. Skipping...
+Processing record 19 of Set 8 | Nuuk
+Processing record 20 of Set 8 | Tilichiki
+Processing record 21 of Set 8 | Tanabe
+Processing record 22 of Set 8 | Wollongong
+Processing record 23 of Set 8 | Penzance
+Processing record 24 of Set 8 | Alofi
+Processing record 25 of Set 8 | Whitehorse
+Processing record 26 of Set 8 | Severo-Kurilsk
+Processing record 27 of Set 8 | Benguela
+Processing record 28 of Set 8 | Caraquet
+Processing record 29 of Set 8 | Pisco
+Processing record 30 of Set 8 | Concepcion
+Processing record 31 of Set 8 | Ekhabi
+Processing record 32 of Set 8 | Sidareja
+Processing record 33 of Set 8 | Gimli
+Processing record 34 of Set 8 | Te Anau
+Processing record 35 of Set 8 | Tarata
+Processing record 36 of Set 8 | Arlit
+Processing record 37 of Set 8 | Galashki
+Processing record 38 of Set 8 | Merauke
+City not found. Skipping...
+Processing record 40 of Set 8 | Le Port
+Processing record 41 of Set 8 | Bay City
+Processing record 42 of Set 8 | Ballina
+Processing record 43 of Set 8 | Manicore
+Processing record 44 of Set 8 | Grindavik
+Processing record 45 of Set 8 | Tibati
+Processing record 46 of Set 8 | Alice Springs
+Processing record 47 of Set 8 | Nata
+Processing record 48 of Set 8 | Port-Gentil
+Processing record 49 of Set 8 | Alexandria
+Processing record 50 of Set 8 | San Juan
+Processing record 1 of Set 9 | Tefe
+City not found. Skipping...
+Processing record 3 of Set 9 | Bulawayo
+Processing record 4 of Set 9 | Turquel  
+Processing record 5 of Set 9 | Hasaki
+Processing record 6 of Set 9 | Rocha
+Processing record 7 of Set 9 | Linxia
+Processing record 8 of Set 9 | Vikulovo
+Processing record 9 of Set 9 | Atbasar
+Processing record 10 of Set 9 | Narsaq
+Processing record 11 of Set 9 | Victoria
+Processing record 12 of Set 9 | Mount Isa
+Processing record 13 of Set 9 | Samarai
+Processing record 14 of Set 9 | Qandala
+Processing record 15 of Set 9 | Kongolo
+Processing record 16 of Set 9 | Brae
+Processing record 17 of Set 9 | Kupang
+Processing record 18 of Set 9 | Bilibino
+Processing record 19 of Set 9 | Lubao
+Processing record 20 of Set 9 | Beloha
+Processing record 21 of Set 9 | Kahului
+Processing record 22 of Set 9 | Saiha
+Processing record 23 of Set 9 | Nyahururu
+Processing record 24 of Set 9 | Varnavino
+Processing record 25 of Set 9 | Sterling
+City not found. Skipping...
+Processing record 27 of Set 9 | Leh
+Processing record 28 of Set 9 | Batticaloa
+Processing record 29 of Set 9 | Boyolangu
+Processing record 30 of Set 9 | Omboue
+Processing record 31 of Set 9 | Cartagena del Chaira
+Processing record 32 of Set 9 | Drayton Valley
+Processing record 33 of Set 9 | San Roque
+Processing record 34 of Set 9 | Santa Vitoria do Palmar
+Processing record 35 of Set 9 | Erzin
+City not found. Skipping...
+Processing record 37 of Set 9 | Kewanee
+City not found. Skipping...
+Processing record 39 of Set 9 | Alyangula
+Processing record 40 of Set 9 | Cairns
+Processing record 41 of Set 9 | Grafton
+Processing record 42 of Set 9 | San Patricio
+Processing record 43 of Set 9 | Bajil
+City not found. Skipping...
+Processing record 45 of Set 9 | Tipuani
+Processing record 46 of Set 9 | Jiwani
+Processing record 47 of Set 9 | Nouadhibou
+City not found. Skipping...
+Processing record 49 of Set 9 | Aksu
+Processing record 50 of Set 9 | Aksarka
+Processing record 1 of Set 10 | Geraldton
+Processing record 2 of Set 10 | La Rioja
+Processing record 3 of Set 10 | Duldurga
+Processing record 4 of Set 10 | Abu Kamal
+Processing record 5 of Set 10 | Punta Alta
+Processing record 6 of Set 10 | Orcopampa
+City not found. Skipping...
+City not found. Skipping...
+Processing record 9 of Set 10 | Zunyi
+Processing record 10 of Set 10 | Ulagan
+Processing record 11 of Set 10 | Yurla
+Processing record 12 of Set 10 | Port Lincoln
+City not found. Skipping...
+Processing record 14 of Set 10 | La Union
+Processing record 15 of Set 10 | Korla
+Processing record 16 of Set 10 | Ranfurly
+Processing record 17 of Set 10 | Litovko
+Processing record 18 of Set 10 | Kargil
+Processing record 19 of Set 10 | Sao Joao da Barra
+Processing record 20 of Set 10 | Mukhen
+Processing record 21 of Set 10 | Gazojak
+City not found. Skipping...
+Processing record 23 of Set 10 | Dwarka
+Processing record 24 of Set 10 | Mayor Pablo Lagerenza
+Processing record 25 of Set 10 | Kaoma
+City not found. Skipping...
+Processing record 27 of Set 10 | Sarwar
+City not found. Skipping...
+Processing record 29 of Set 10 | Sarkand
+Processing record 30 of Set 10 | Shelburne
+Processing record 31 of Set 10 | Sulangan
+Processing record 32 of Set 10 | San Felipe
+Processing record 33 of Set 10 | Parksville
+Processing record 34 of Set 10 | Sur
+Processing record 35 of Set 10 | Ciudad Bolivar
+Processing record 36 of Set 10 | Port Augusta
+Processing record 37 of Set 10 | Los Aquijes
+Processing record 38 of Set 10 | Asosa
+Processing record 39 of Set 10 | Magistralnyy
+Processing record 40 of Set 10 | Vakhrushevo
+Processing record 41 of Set 10 | Maxixe
+Processing record 42 of Set 10 | Tashara
+Processing record 43 of Set 10 | Kyabe
+Processing record 44 of Set 10 | Port Macquarie
+Processing record 45 of Set 10 | Concordia
+Processing record 46 of Set 10 | Manyana
+City not found. Skipping...
+City not found. Skipping...
+Processing record 49 of Set 10 | Fairbanks
+Processing record 50 of Set 10 | Forestville
+Processing record 1 of Set 11 | Lulea
+Processing record 2 of Set 11 | Hailar
+Processing record 3 of Set 11 | Zabid
+Processing record 4 of Set 11 | Skjervoy
+Processing record 5 of Set 11 | Ketchikan
+Processing record 6 of Set 11 | Barinas
+Processing record 7 of Set 11 | Balabac
+Processing record 8 of Set 11 | Abu Dhabi
+City not found. Skipping...
+Processing record 10 of Set 11 | Bauchi
+Processing record 11 of Set 11 | Mandalgovi
+City not found. Skipping...
+Processing record 13 of Set 11 | Tibu
+Processing record 14 of Set 11 | Grand Baie
+Processing record 15 of Set 11 | Sept-Iles
+Processing record 16 of Set 11 | Taoudenni
+Processing record 17 of Set 11 | Kavaratti
+Processing record 18 of Set 11 | Gurupi
+Processing record 19 of Set 11 | Yar-Sale
+Processing record 20 of Set 11 | Ambilobe
+Processing record 21 of Set 11 | Nizhniy Tsasuchey
+Processing record 22 of Set 11 | Harbour Breton
+Processing record 23 of Set 11 | Sladkovo
+Processing record 24 of Set 11 | Gold Coast
+City not found. Skipping...
+Processing record 26 of Set 11 | Pamplona
+Processing record 27 of Set 11 | Aitape
+City not found. Skipping...
+Processing record 29 of Set 11 | Coolum Beach
+Processing record 30 of Set 11 | Bien Hoa
+Processing record 31 of Set 11 | Dingle
+City not found. Skipping...
+Processing record 33 of Set 11 | Atambua
+City not found. Skipping...
+Processing record 35 of Set 11 | Nishihara
+Processing record 36 of Set 11 | Turbat
+Processing record 37 of Set 11 | Caravelas
+Processing record 38 of Set 11 | Tuatapere
+Processing record 39 of Set 11 | Dong Hoi
+Processing record 40 of Set 11 | Sturgeon Bay
+City not found. Skipping...
+Processing record 42 of Set 11 | Vostok
+Processing record 43 of Set 11 | Lamu
+Processing record 44 of Set 11 | Padang
+Processing record 45 of Set 11 | Ilawa
+Processing record 46 of Set 11 | Sun City West
+Processing record 47 of Set 11 | La Romana
+Processing record 48 of Set 11 | Mana
+Processing record 49 of Set 11 | Salalah
+Processing record 50 of Set 11 | Katav-Ivanovsk
+Processing record 1 of Set 12 | Fort Nelson
+Processing record 2 of Set 12 | Araguaina
+Processing record 3 of Set 12 | Viedma
+Processing record 4 of Set 12 | Kearney
+Processing record 5 of Set 12 | Naples
+City not found. Skipping...
+Processing record 7 of Set 12 | Road Town
+Processing record 8 of Set 12 | Shenjiamen
+Processing record 9 of Set 12 | Tynda
+Processing record 10 of Set 12 | Bodaybo
+Processing record 11 of Set 12 | Touros
+Processing record 12 of Set 12 | Chicama
+City not found. Skipping...
+Processing record 14 of Set 12 | Green Valley
+City not found. Skipping...
+Processing record 16 of Set 12 | Rosetown
+Processing record 17 of Set 12 | Limoeiro do Ajuru
+Processing record 18 of Set 12 | Auki
+Processing record 19 of Set 12 | Onega
+Processing record 20 of Set 12 | Naze
+Processing record 21 of Set 12 | Gongzhuling
+Processing record 22 of Set 12 | Gornopravdinsk
+Processing record 23 of Set 12 | Ilo
+City not found. Skipping...
+Processing record 25 of Set 12 | Kamaishi
+Processing record 26 of Set 12 | Opelousas
+Processing record 27 of Set 12 | Garowe
+City not found. Skipping...
+Processing record 29 of Set 12 | Carlsbad
+Processing record 30 of Set 12 | The Valley
+Processing record 31 of Set 12 | Perth
+Processing record 32 of Set 12 | Hobyo
+Processing record 33 of Set 12 | Mitsamiouli
+Processing record 34 of Set 12 | Ulaangom
+Processing record 35 of Set 12 | Iturama
+Processing record 36 of Set 12 | Ekuvukeni
+Processing record 37 of Set 12 | Gandia
+Processing record 38 of Set 12 | Aguimes
+Processing record 39 of Set 12 | Ituiutaba
+Processing record 40 of Set 12 | Hun
+Processing record 41 of Set 12 | Qasigiannguit
+City not found. Skipping...
+Processing record 43 of Set 12 | Ondo
+Processing record 44 of Set 12 | Kosh-Agach
+Processing record 45 of Set 12 | Cap Malheureux
+Processing record 46 of Set 12 | Nome
+Processing record 47 of Set 12 | Valparaiso
+Processing record 48 of Set 12 | Yinchuan
+City not found. Skipping...
+Processing record 50 of Set 12 | Staines
+Processing record 1 of Set 13 | Myrtle Beach
+-----------------------------
+Data Retrieval Complete
