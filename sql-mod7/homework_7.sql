@@ -161,8 +161,8 @@ LIMIT 25;
 SELECT film_id,
 	   title
 FROM film
-WHERE title LIKE 'K%'
-	OR title LIKE 'Q%'
+WHERE (title LIKE 'K%'
+	OR title LIKE 'Q%')
 AND language_id IN (
 	SELECT language_id
     FROM language
