@@ -48,7 +48,8 @@ FROM country
 WHERE country IN (
 	'Afghanistan',
     'Bangladesh',
-    'China');
+    'China'
+);
 
 -- 3a) create descrip column with blob dtype
 ALTER TABLE actor
@@ -161,12 +162,15 @@ LIMIT 25;
 SELECT film_id,
 	   title
 FROM film
-WHERE (title LIKE 'K%'
-	OR title LIKE 'Q%')
+WHERE (
+	title LIKE 'K%'
+	OR title LIKE 'Q%'
+)
 AND language_id IN (
 	SELECT language_id
     FROM language
-    WHERE name = 'English')
+    WHERE name = 'English'
+)
 LIMIT 25;
 
 -- 7b) use subqueries for all actors in given film
@@ -179,7 +183,9 @@ WHERE actor_id IN (
     WHERE film_id IN (
 		SELECT film_id
         FROM film
-        WHERE title = 'Alone Trip'));
+        WHERE title = 'Alone Trip'
+	)
+);
 
 -- 7c) use multiple joins to retrieve customer info
 SELECT last_name,
@@ -204,7 +210,9 @@ WHERE film_id IN (
     WHERE category_id IN (
 		SELECT category_id
         FROM category
-        WHERE name = 'Family'));
+        WHERE name = 'Family'
+	)
+);
 
 -- 7e) display most frequently rented movies in desc order
 SELECT title,
@@ -268,7 +276,8 @@ CREATE OR REPLACE VIEW top_five AS (
 		ON rental.rental_id = payment.rental_id
 	GROUP BY category.category_id
 	ORDER BY gross_rev DESC
-	LIMIT 5);
+	LIMIT 5
+);
 
 -- 8b) display view created in (8a)
 SELECT genre,gross_rev FROM top_five;
