@@ -19,7 +19,7 @@ WHERE first_name = 'Joe'
 LIMIT 25;
 
 -- 2b) display actors with 'gen' in last name
-SELECT CONCAT(first_name,' ',last_name) AS actor_gen
+SELECT actor_id,last_name,first_name
 FROM actor
 WHERE last_name like '%GEN%'
 LIMIT 25;
@@ -66,10 +66,22 @@ SET first_name = 'HARPO'
 WHERE first_name = 'GROUCHO'
 AND last_name = 'WILLIAMS';
 
+-- check, should return empty
+SELECT first_name,last_name
+FROM actor
+WHERE first_name = 'GROUCHO'
+AND last_name = 'WILLIAMS';
+
 -- 4d) undo changes, back to groucho williams
 UPDATE actor
 SET first_name = 'GROUCHO'
 WHERE first_name = 'HARPO'
+AND last_name = 'WILLIAMS';
+
+-- check, should return groucho entry
+SELECT first_name,last_name
+FROM actor
+WHERE first_name = 'GROUCHO'
 AND last_name = 'WILLIAMS';
 
 -- 5a) create new table, dtypes taken from object info
