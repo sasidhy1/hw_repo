@@ -4,35 +4,46 @@
 USE sakila;
 
 -- 1a) display first and last name variables
-SELECT first_name,last_name FROM actor
+SELECT actor_id,
+	   first_name,
+	   last_name
+FROM actor
 LIMIT 25;
 
 -- 1b) display first and last name in concatenated string
-SELECT CONCAT(first_name,' ',last_name) AS actor_name
+SELECT actor_id,
+	   CONCAT(first_name,' ',last_name) AS actor_name
 FROM actor
 LIMIT 25;
 
 -- 2a) display id, first and last name for 'Joe'
-SELECT actor_id,first_name,last_name
+SELECT actor_id,
+	   first_name,
+       last_name
 FROM actor
 WHERE first_name = 'Joe'
 LIMIT 25;
 
 -- 2b) display actors with 'gen' in last name
-SELECT actor_id,last_name,first_name
+SELECT actor_id,
+	   last_name,
+       first_name
 FROM actor
 WHERE last_name like '%GEN%'
 LIMIT 25;
 
 -- 2c) display ordered actors with 'li' in last name
-SELECT actor_id,last_name,first_name
+SELECT actor_id,
+	   last_name,
+       first_name
 FROM actor
 WHERE last_name like '%LI%'
 ORDER BY last_name,first_name
 LIMIT 25;
 
 -- 2d) display country and id for given list
-SELECT country_id,country
+SELECT country_id,
+	   country
 FROM country
 WHERE country IN (
 	'Afghanistan',
@@ -41,20 +52,22 @@ WHERE country IN (
 
 -- 3a) create descrip column with blob dtype
 ALTER TABLE actor
-ADD description BLOB;
+	ADD description BLOB;
 
 -- 3b) drop the created descrip column
 ALTER TABLE actor
-DROP COLUMN description;
+	DROP COLUMN description;
 
 -- 4a) display count for each unique last name
-SELECT last_name, count(last_name) AS 'count'
+SELECT last_name,
+	   count(last_name) AS 'count'
 FROM actor
 GROUP BY last_name
 LIMIT 25;
 
 -- 4b) display unique last names with count >= 2
-SELECT last_name, count(last_name) AS 'count'
+SELECT last_name,
+	   count(last_name) AS 'count'
 FROM actor
 GROUP BY last_name
 HAVING count(last_name) >= 2
@@ -64,25 +77,27 @@ LIMIT 25;
 UPDATE actor
 SET first_name = 'HARPO'
 WHERE first_name = 'GROUCHO'
-AND last_name = 'WILLIAMS';
+	AND last_name = 'WILLIAMS';
 
 -- check, should return empty
-SELECT first_name,last_name
+SELECT first_name,
+	   last_name
 FROM actor
 WHERE first_name = 'GROUCHO'
-AND last_name = 'WILLIAMS';
+	AND last_name = 'WILLIAMS';
 
 -- 4d) undo changes, back to groucho williams
 UPDATE actor
 SET first_name = 'GROUCHO'
 WHERE first_name = 'HARPO'
-AND last_name = 'WILLIAMS';
+	AND last_name = 'WILLIAMS';
 
 -- check, should return groucho entry
-SELECT first_name,last_name
+SELECT first_name,
+	   last_name
 FROM actor
 WHERE first_name = 'GROUCHO'
-AND last_name = 'WILLIAMS';
+	AND last_name = 'WILLIAMS';
 
 -- 5a) create new table, dtypes taken from object info
 CREATE TABLE IF NOT EXISTS address (
@@ -99,7 +114,10 @@ CREATE TABLE IF NOT EXISTS address (
 );
 
 -- 6a) join staff and address, display names and address
-SELECT staff_id,first_name,last_name,address
+SELECT staff_id,
+	   first_name,
+       last_name,
+       address
 FROM staff LEFT JOIN address
 	ON staff.address_id = address.address_id;
 
@@ -110,24 +128,29 @@ SELECT staff.staff_id,
 FROM staff LEFT JOIN payment
 	ON staff.staff_id = payment.staff_id
 WHERE MONTH(payment_date) = 08
-AND YEAR(payment_date) = 2005
+	AND YEAR(payment_date) = 2005
 GROUP BY staff.staff_id;
 
 -- 6c) join film and film_actor, display actor counts
-SELECT title,COUNT(actor_id) AS listed_actors
+SELECT title,
+	   COUNT(actor_id) AS listed_actors
 FROM film INNER JOIN film_actor
 	ON film.film_id = film_actor.film_id
 GROUP BY actor_id
 LIMIT 25;
 
 -- 6d) count copies of given film in inventory
-SELECT film.film_id,title,COUNT(*) AS copies
+SELECT film.film_id,
+	   title,
+       COUNT(*) AS copies
 FROM film LEFT JOIN inventory
 	ON film.film_id = inventory.film_id
 WHERE title = 'Hunchback Impossible';
 
 -- 6e) join customer and payment, display total paid
-SELECT last_name,first_name,SUM(amount) AS total_paid
+SELECT last_name,
+	   first_name,
+       SUM(amount) AS total_paid
 FROM customer LEFT JOIN payment
 	ON customer.customer_id = payment.customer_id
 GROUP BY customer.customer_id
@@ -135,7 +158,8 @@ ORDER BY last_name
 LIMIT 25;
 
 -- 7a) use subqueries for english films starting with K,Q
-SELECT film_id,title
+SELECT film_id,
+	   title
 FROM film
 WHERE title LIKE 'K%'
 	OR title LIKE 'Q%'
@@ -146,7 +170,8 @@ AND language_id IN (
 LIMIT 25;
 
 -- 7b) use subqueries for all actors in given film
-SELECT actor_id,CONCAT(first_name,' ',last_name) AS actor_name
+SELECT actor_id,
+	   CONCAT(first_name,' ',last_name) AS actor_name
 from actor
 WHERE actor_id IN (
 	SELECT actor_id
@@ -157,9 +182,11 @@ WHERE actor_id IN (
         WHERE title = 'Alone Trip'));
 
 -- 7c) use multiple joins to retrieve customer info
-SELECT last_name,first_name,email,country
-FROM customer
-LEFT JOIN address
+SELECT last_name,
+	   first_name,
+       email,
+       country
+FROM customer LEFT JOIN address
 	ON customer.address_id = address.address_id
 LEFT JOIN city
 	ON address.city_id = city.city_id
@@ -180,9 +207,9 @@ WHERE film_id IN (
         WHERE name = 'Family'));
 
 -- 7e) display most frequently rented movies in desc order
-SELECT title,count(rental.inventory_id) AS rental_count
-FROM film
-LEFT JOIN inventory
+SELECT title,
+	   count(rental.inventory_id) AS rental_count
+FROM film LEFT JOIN inventory
 	ON film.film_id = inventory.film_id
 LEFT JOIN rental
 	ON inventory.inventory_id = rental.inventory_id
@@ -190,9 +217,9 @@ GROUP BY title
 ORDER BY rental_count DESC;
 
 -- 7f) use multiple joins to retrieve profit per store
-SELECT store.store_id,SUM(amount) AS total_profit
-FROM store
-LEFT JOIN inventory
+SELECT store.store_id,
+	   SUM(amount) AS total_profit
+FROM store LEFT JOIN inventory
 	ON store.store_id = inventory.store_id
 LEFT JOIN rental
 	ON inventory.inventory_id = rental.inventory_id
@@ -201,9 +228,11 @@ LEFT JOIN payment
 GROUP BY store.store_id;
 
 -- 7g) display location details for each store
-SELECT store_id,address,city,country
-FROM store
-LEFT JOIN address
+SELECT store_id,
+	   address,
+       city,
+       country
+FROM store LEFT JOIN address
 	ON store.address_id = address.address_id
 LEFT JOIN city
 	ON address.city_id = city.city_id
@@ -211,9 +240,9 @@ LEFT JOIN country
 	ON city.country_id = country.country_id;
     
 -- 7h) list top five genres in gross revenue
-SELECT name AS genre,SUM(amount) AS gross_rev
-FROM category
-LEFT JOIN film_category
+SELECT name AS genre,
+	   SUM(amount) AS gross_rev
+FROM category LEFT JOIN film_category
 	ON category.category_id = film_category.category_id
 LEFT JOIN inventory
 	ON film_category.film_id = inventory.film_id
@@ -227,9 +256,9 @@ LIMIT 5;
 
 -- 8a) create view for previous query (7h)
 CREATE OR REPLACE VIEW top_five AS (
-	SELECT name AS genre,SUM(amount) AS gross_rev
-    FROM category
-    LEFT JOIN film_category
+	SELECT name AS genre,
+		   SUM(amount) AS gross_rev
+    FROM category LEFT JOIN film_category
 		ON category.category_id = film_category.category_id
 	LEFT JOIN inventory
 		ON film_category.film_id = inventory.film_id
