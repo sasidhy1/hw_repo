@@ -5,7 +5,7 @@
 # import dependencies
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session,sessionmaker
 from sqlalchemy import create_engine,func
 
 # Specify db location
@@ -22,7 +22,7 @@ Measurement = Base.classes.measurement
 Station = Base.classes.station
 
 # Create our session (link) from Python to the DB
-
+session_factory = sessionmaker(bind=engine)
 
 ###########################
 ##### FLASK API SETUP #####
@@ -30,11 +30,15 @@ Station = Base.classes.station
 
 # import dependencies
 from flask import Flask,jsonify
+from flask_sqlalchemy_session import flask_scoped_session
 import numpy as np
 import datetime as dt
 
 # create app for flask api
 app = Flask(__name__)
+
+# create unique sessions per flask request
+session = flask_scoped_session(session_factory,app)
 
 # define static routes
 @app.route('/')
@@ -53,14 +57,14 @@ def index():
 def prcp():
 	print('Server received request for prcp page...')
 	
-	# end_date = session.query(Measurement.date).\
-	# 	order_by(Measurement.date.desc()).first()[0]
+	end_date = session.query(Measurement.date).\
+		order_by(Measurement.date.desc()).first()[0]
 	
-	# dat = [int(n) for n in end_date[0].split('-')]
-	# y = dt.date(*dat).strftime("%Y")
-	# m = dt.date(*dat).strftime("%m")
-	# d = dt.date(*dat).strftime("%d")
-	session = Session(engine)
+	dat = [int(n) for n in end_date.split('-')]
+
+	y = dt.date(*dat).strftime("%Y")
+	m = dt.date(*dat).strftime("%m")
+	d = dt.date(*dat).strftime("%d")
 	yr_ago = dt.date(2017-1,8,23)
 
 	query = session.query(Measurement.date,Measurement.prcp).\
@@ -78,7 +82,6 @@ def prcp():
 @app.route('/api/v1.0/stations')
 def stat():
 	print('Server received request for stat page...')
-	session = Session(engine)
 	query = session.query(Station.name).all()
 
 	disp = list(np.ravel(query))
@@ -87,7 +90,6 @@ def stat():
 @app.route('/api/v1.0/tobs')
 def tobs():
 	print('Server received request for tobs page...')
-	session = Session(engine)
 	yr_ago = dt.date(2017-1,8,23)
 
 	sel = [Measurement.station,
@@ -110,11 +112,7 @@ def tobs():
 
 @app.route('/api/v1.0/<start>')
 def given_start(start):
-	session = Session(engine)
 	print('Server received request for supplied path variable...')
-
-	session = Session(engine)
-
 	sel = [func.min(Measurement.tobs),
 		func.max(Measurement.tobs),
 		func.avg(Measurement.tobs)]
@@ -137,8 +135,6 @@ def given_start(start):
 @app.route('/api/v1.0/<start>/<end>')
 def given_start_and_end(start,end):
 	print('Server received request for supplied path variables...')
-
-	session = Session(engine)
 
 	sel = [func.min(Measurement.tobs),
 		func.max(Measurement.tobs),
