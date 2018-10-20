@@ -30,6 +30,8 @@ session = Session(engine)
 
 # import dependencies
 from flask import Flask,jsonify
+import numpy as np
+import datetime as dt
 
 # create app for flask api
 app = Flask(__name__)
@@ -47,16 +49,41 @@ def index():
 		f"<a href='/api/v1.0/<start>/<end>'>/api/v1.0/&lt;start&gt;/&lt;end&gt;</a><br>"
 	)
 
-
 @app.route('/api/v1.0/precipitation')
 def prcp():
 	print('Server received request for prcp page...')
+	
+	end_date = session.query(Measurement.date).\
+		order_by(Measurement.date.desc()).first()[0]
+	
+	# dat = [int(n) for n in end_date[0].split('-')]
+	# y = dt.date(*dat).strftime("%Y")
+	# m = dt.date(*dat).strftime("%m")
+	# d = dt.date(*dat).strftime("%d")
 
+	yr_ago = dt.date(2017-1,8,23)
+
+	q = session.query(Measurement.date,Measurement.prcp).\
+    	filter(Measurement.date > yr_ago).\
+    	order_by(Measurement.date).all()
+
+	all_data = []
+	for i in q:
+		this_dict = {}
+		this_dict[i[0]] = i[1]
+		all_data.append(this_dict)
+
+	return jsonify(all_data)
 
 @app.route('/api/v1.0/stations')
 def stat():
 	print('Server received request for stat page...')
 
+	q = session.query(Station.name).all()
+
+	disp = list(np.ravel(q))
+
+	return jsonify(disp)
 
 @app.route('/api/v1.0/tobs')
 def tobs():
