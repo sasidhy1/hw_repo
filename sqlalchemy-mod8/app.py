@@ -65,14 +65,15 @@ def prcp():
 	y = dt.date(*dat).strftime("%Y")
 	m = dt.date(*dat).strftime("%m")
 	d = dt.date(*dat).strftime("%d")
-	yr_ago = dt.date(2017-1,8,23)
 
-	query = session.query(Measurement.date,Measurement.prcp).\
+	yr_ago = dt.date(int(y)-1,int(m),int(d))
+
+	q = session.query(Measurement.date,Measurement.prcp).\
 		filter(Measurement.date > yr_ago).\
 		order_by(Measurement.date).all()
 
 	all_data = []
-	for i in query:
+	for i in q:
 		this_dict = {}
 		this_dict[i[0]] = i[1]
 		all_data.append(this_dict)
@@ -81,29 +82,42 @@ def prcp():
 
 @app.route('/api/v1.0/stations')
 def stat():
+	
 	print('Server received request for stat page...')
-	query = session.query(Station.name).all()
+	
+	q = session.query(Station.name).all()
 
-	disp = list(np.ravel(query))
+	disp = list(np.ravel(q))
 	return jsonify(disp)
 
 @app.route('/api/v1.0/tobs')
 def tobs():
+	
 	print('Server received request for tobs page...')
-	yr_ago = dt.date(2017-1,8,23)
+	
+	end_date = session.query(Measurement.date).\
+		order_by(Measurement.date.desc()).first()[0]
+	
+	dat = [int(n) for n in end_date.split('-')]
+
+	y = dt.date(*dat).strftime("%Y")
+	m = dt.date(*dat).strftime("%m")
+	d = dt.date(*dat).strftime("%d")
+
+	yr_ago = dt.date(int(y)-1,int(m),int(d))
 
 	sel = [Measurement.station,
 		Measurement.date,
 		Measurement.tobs]
 
-	query = session.query(*sel).\
+	q = session.query(*sel).\
 		filter(Station.station == Measurement.station).\
 		filter(Station.station == 'USC00519281').\
 		filter(Measurement.date > yr_ago).\
 		order_by(Measurement.date).all()
 
 	all_data = []
-	for i in query:
+	for i in q:
 		this_dict = {}
 		this_dict[i[1]] = i[2]
 		all_data.append(this_dict)
@@ -112,18 +126,20 @@ def tobs():
 
 @app.route('/api/v1.0/<start>')
 def given_start(start):
+	
 	print('Server received request for supplied path variable...')
+	
 	sel = [func.min(Measurement.tobs),
 		func.max(Measurement.tobs),
 		func.avg(Measurement.tobs)]
 
-	query = session.query(*sel).\
+	q = session.query(*sel).\
 		filter(Station.station == Measurement.station).\
 		filter(Measurement.date > start).\
 		filter(Station.station == 'USC00519281').all()
 
 	all_data = []
-	for i in query:
+	for i in q:
 		this_dict = {}
 		this_dict['min'] = i[0]
 		this_dict['max'] = i[1]
@@ -134,20 +150,21 @@ def given_start(start):
 
 @app.route('/api/v1.0/<start>/<end>')
 def given_start_and_end(start,end):
+	
 	print('Server received request for supplied path variables...')
 
 	sel = [func.min(Measurement.tobs),
 		func.max(Measurement.tobs),
 		func.avg(Measurement.tobs)]
 
-	query = session.query(*sel).\
+	q = session.query(*sel).\
 		filter(Station.station == Measurement.station).\
-		filter(Measurement.date > start).\
-		filter(Measurement.date < end).\
+		filter(Measurement.date >= start).\
+		filter(Measurement.date <= end).\
 		filter(Station.station == 'USC00519281').all()
 
 	all_data = []
-	for i in query:
+	for i in q:
 		this_dict = {}
 		this_dict['min'] = i[0]
 		this_dict['max'] = i[1]
