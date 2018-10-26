@@ -1,0 +1,52 @@
+body {
+	background-color:#EDEDED;
+}
+
+.box {
+	background-color:#FFFFFF;
+	padding:20px;
+}
+
+.box-holder {
+	margin:50px;
+}
+
+a {
+	color:#666666;
+}
+
+h1 {
+	color:#0BADA6;
+	font-family:georgia;
+	font-weight:bold;
+}
+
+h3 {
+	color:#0BADA6;
+	font-family:georgia;
+	font-weight:bold;
+}
+
+.wrap img {
+	position: relative;
+	float: left;
+}
+
+img {
+	padding-right:15px;
+	padding-bottom:15px;
+}
+
+nav {
+	background-color:#FFFFFF;
+	margin-left:-20px;
+	margin-right:-20px;
+}
+
+.navbar-brand {
+	background-color:#0BADA6;
+	color:#FFFFFF;
+	font-family:georgia;
+	font-weight:bold;
+	font-size: 1.75em
+}
