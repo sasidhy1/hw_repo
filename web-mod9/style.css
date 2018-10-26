@@ -2,16 +2,21 @@ body {
 	background-color:#EDEDED;
 }
 
-.box {
-	background-color:#FFFFFF;
-	padding:20px;
-}
-
 .box-holder {
 	margin:50px;
 }
 
+.box {
+	background-color:#FFFFFF;
+	padding:20px;
+	font-size: .9em
+}
+
 a {
+	color:#666666;
+}
+
+small {
 	color:#666666;
 }
 
@@ -19,6 +24,7 @@ h1 {
 	color:#0BADA6;
 	font-family:georgia;
 	font-weight:bold;
+	font-size: 2em
 }
 
 h3 {
@@ -27,14 +33,22 @@ h3 {
 	font-weight:bold;
 }
 
-.wrap img {
-	position: relative;
-	float: left;
-}
-
 img {
 	padding-right:15px;
 	padding-bottom:15px;
+}
+
+.wrap img {
+	float: left;
+	padding-bottom:5px;
+}
+
+.img-thumbnail {
+
+}
+
+.img2 {
+
 }
 
 nav {
@@ -49,4 +63,24 @@ nav {
 	font-family:georgia;
 	font-weight:bold;
 	font-size: 1.75em
+}
+
+.header-align {
+	text-align: left;
+}
+
+/* Adding media queries: */
+@media (max-width: 1050px) {
+	h1  {
+		font-size: 1.75em;
+	}
+	h3  {
+		font-size: 1.5em;
+	}
+	.box {
+		font-size: .75em;
+	}
+	.box-holder {
+		margin:20px;
+	}
 }
