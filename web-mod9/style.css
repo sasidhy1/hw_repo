@@ -12,7 +12,7 @@ body {
 	font-size: .9em
 }
 
-a {
+nav a {
 	color:#666666;
 }
 
@@ -36,22 +36,25 @@ h3 {
 img {
 	padding-right:15px;
 	padding-bottom:15px;
+	max-width: 100%;
+	height: auto;
+}
+
+.img-thumbnail {
+  object-fit: cover;
+  width:150px;
+  height:150px;
 }
 
 .wrap img {
 	float: left;
 	padding-bottom:5px;
+	object-fit: cover;
+	width:200px;
+	height:200px;
 }
 
-.img-thumbnail {
-
-}
-
-.img2 {
-
-}
-
-nav {
+.navbar {
 	background-color:#FFFFFF;
 	margin-left:-20px;
 	margin-right:-20px;
@@ -62,11 +65,36 @@ nav {
 	color:#FFFFFF;
 	font-family:georgia;
 	font-weight:bold;
-	font-size: 1.75em
+	font-size: 1.75em;
+	padding-right:15px;
+	padding-left:15px;
+	margin-top:-20px;
+	margin-bottom:-20px;
+	margin-left:5%;
+}
+
+.dropdown-item {
+	color:#666666;
 }
 
 .header-align {
 	text-align: left;
+}
+
+.band1 {
+	position:fixed;
+	bottom:0px;
+	height:45px;
+	background-color:#0BADA6;
+	width:100%;
+}
+
+.band2 {
+	position:fixed;
+	bottom:0px;
+	height:40px;
+	background-color:#666666;
+	width:100%;
 }
 
 /* Adding media queries: */
@@ -74,13 +102,23 @@ nav {
 	h1  {
 		font-size: 1.75em;
 	}
+
 	h3  {
 		font-size: 1.5em;
 	}
+	
 	.box {
 		font-size: .75em;
 	}
+
 	.box-holder {
-		margin:20px;
+		margin-left:0px;
+		margin-right:0px;
+	}
+}
+
+@media (max-width: 575px) {
+	.navbar {
+		background-color:#0BADA6;
 	}
 }
