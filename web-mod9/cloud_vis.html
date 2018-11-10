@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Latitude vs. Cloudiness</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<div class='container-fluid'>
+		<nav class='navbar navbar-expand-sm'>
+			<a class='navbar-brand' href="index.html">Latitude</a>
+			<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>				
+			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+				<ul class='navbar-nav'>
+					<li class='nav-item dropdown'>
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Plots</a>
+					    <div class="dropdown-menu">
+							<a class="dropdown-item" href="temp_vis.html">Max Temperature</a>
+							<a class="dropdown-item" href="humid_vis.html">Humidity</a>
+							<a class="dropdown-item" href="cloud_vis.html">Cloudiness</a>
+							<a class="dropdown-item" href="wind_vis.html">Wind Speed</a>
+						</div>
+					</li>
+					<li class='nav-item'>
+						<a class='nav-link' href="comparisons.html">Comparison</a>
+					</li>
+					<li class='nav-item'>
+						<a class='nav-link' href="data.html">Data</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+	<div class='container-fluid'>
+		<div class='row box-holder'>
+			<div class='col-sm-8'>
+				<div class='box'>
+					<h1>Cloudiness</h1>
+					<hr>
+					<img src="images/lat_vs_cloud.png" width=400>
+					<p>The scatter plot of Latitude vs. Cloudiness seems to have no obvious pattern with a suspicious spread of data. We cannot definitively say that the spread is random, and that latitude has no effect on cloudiness because of the concentration of cities at the lower and upper ends of the graph. From this scatter plot, we can see there are clusters of cities across all latitudes centered around the 0 and 90 percentages of reported cloudiness.</p>
+				</div>
+			</div>
+			<div class='col-sm-4'>
+				<div class='box'>
+					<h3>Visualizations</h3>
+					<hr>
+					<div class='row'>
+						<div class='col-sm-12'>
+							<a href="temp_vis.html"><img class='img-thumbnail' src="images/lat_vs_temp.png" width=150 height=150></a>
+							<a href="humid_vis.html"><img class='img-thumbnail' src="images/lat_vs_humid.png" width=150 height=150></a>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-12'>
+							<a href="cloud_vis.html"><img class='img-thumbnail' src="images/lat_vs_cloud.png" width=150 height=150></a>
+							<a href="wind_vis.html"><img class='img-thumbnail' src="images/lat_vs_wind.png" width=150 height=150></a>
+						</div>
+					</div>
+					<small class='blockquote-footer'>Images taken from WeatherPy API Analysis -- HW6</small>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class='container-fluid'>
+		<div class='row band1'></div>
+	</div>
+
+	<div class='container-fluid'>
+		<div class='row band2'></div>
+	</div>
+
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
