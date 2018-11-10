@@ -1,4 +1,4 @@
-from flask import Flask,redirect
+from flask import Flask,redirect,render_template
 from flask_pymongo import PyMongo
 import scrape_mars
 
@@ -12,7 +12,7 @@ mongo = PyMongo(app, uri='mongodb://localhost:27017/mars_app')
 @app.route('/')
 def index():
 	print('Server received request.')
-	return 'Welcome to home page!'
+	return render_template("index.html")
 
 @app.route('/scrape')
 def scrape():
