@@ -24,7 +24,7 @@ def scrape():
     news_p = result.find('div',class_='article_teaser_body').text
 
     scraped_data['news_title'] = news_title
-    scraped_data['news_title'] = news_p
+    scraped_data['news_p'] = news_p
 
 
     #### JPL Mars Space Images
