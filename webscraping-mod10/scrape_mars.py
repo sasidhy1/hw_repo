@@ -5,106 +5,108 @@ import requests
 import time
 
 def init_browser():
-    executable_path = {'executable_path': 'chromedriver.exe'}
-    return Browser('chrome', **executable_path, headless=False)
+	executable_path = {'executable_path': 'chromedriver.exe'}
+	return Browser('chrome', **executable_path, headless=False)
 
 def scrape():
 
-    browser = init_browser()
-    scraped_data = {}
+	browser = init_browser()
+	scraped_data = {}
 
-    #### Nasa Mars News
-    with open('mars_exploration.html') as file:
-        html = file.read()
+	#### Nasa Mars News
+	url = 'https://mars.nasa.gov/news/'
+	browser.visit(url)
 
-    soup = bs(html,'html.parser')
-    result = soup.find('li',class_='slide')
+	html = browser.html
+	soup = bs(html,'html.parser')
 
-    news_title = result.find('div',class_='content_title').text
-    news_p = result.find('div',class_='article_teaser_body').text
+	result = soup.find('li',class_='slide')
 
-    scraped_data['news_title'] = news_title
-    scraped_data['news_p'] = news_p
+	news_title = result.find('div',class_='content_title').text
+	news_p = result.find('div',class_='article_teaser_body').text
 
-
-    #### JPL Mars Space Images
-    url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
-    browser.visit(url)
-
-    time.sleep(2)
-    browser.click_link_by_partial_text('FULL IMAGE')
-
-    time.sleep(2)
-    browser.click_link_by_partial_text('more info')
-
-    html = browser.html
-    soup = bs(html,'html.parser')
-
-    results = soup.find_all('div',class_='download_tiff')
-    for result in results:
-        if (result.a):
-            if ('jpg' in result.a['href']):
-                featured_image_url = result.a['href']
-
-    scraped_data['featured_image_url'] = featured_image_url
+	scraped_data['news_title'] = news_title
+	scraped_data['news_p'] = news_p
 
 
-    #### Mars Weather
-    url = 'https://twitter.com/marswxreport?lang=en'
-    response = requests.get(url)
+	#### JPL Mars Space Images
+	url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
+	browser.visit(url)
 
-    html = response.text
-    soup = bs(html,'html.parser')
+	time.sleep(2)
+	browser.click_link_by_partial_text('FULL IMAGE')
 
-    mars_weather = soup.find('p',class_='tweet-text').text
+	time.sleep(2)
+	browser.click_link_by_partial_text('more info')
 
-    scraped_data['mars_weather'] = mars_weather
+	html = browser.html
+	soup = bs(html,'html.parser')
 
+	results = soup.find_all('div',class_='download_tiff')
+	for result in results:
+		if (result.a):
+			if ('jpg' in result.a['href']):
+				featured_image_url = result.a['href']
 
-    #### Mars Facts
-    url = 'https://space-facts.com/mars/'
-    tables = pd.read_html(url)
-
-    df = tables[0]
-
-    df.columns = ['Description','Value']
-    df.set_index('Description',inplace=True)
-
-    html_table = df.to_html()
-    html_table_str = html_table.replace('\n','')
-
-    scraped_data['html_table_str'] = html_table_str
+	scraped_data['featured_image_url'] = featured_image_url
 
 
-    #### Mars Hemispheres
-    url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
-    browser.visit(url)
+	#### Mars Weather
+	url = 'https://twitter.com/marswxreport?lang=en'
+	response = requests.get(url)
 
-    html = browser.html
-    soup = bs(html,'html.parser')
+	html = response.text
+	soup = bs(html,'html.parser')
 
-    results = soup.find_all('div',class_='description')
+	mars_weather = soup.find('p',class_='tweet-text').text
 
-    base = 'https://astrogeology.usgs.gov'
+	scraped_data['mars_weather'] = mars_weather
 
-    hemisphere_image_urls = []
-    for result in results:
-        holder = {}
-        if (result.a):
-            if (result.a.text):
-                holder['title'] = result.a.text[:-9]
 
-            browser.visit(base + result.a['href'])
+	#### Mars Facts
+	url = 'https://space-facts.com/mars/'
+	tables = pd.read_html(url)
 
-            html = browser.html
-            soup = bs(html,'html.parser')
-            downloads = soup.find('div',class_='downloads')
-            holder['img_url'] = downloads.find('li').a['href']
+	df = tables[0]
 
-        hemisphere_image_urls.append(holder)
+	df.columns = ['Description','Value']
+	df.set_index('Description',inplace=True)
 
-    scraped_data['hemisphere_image_urls'] = hemisphere_image_urls
+	html_table = df.to_html()
+	html_table_str = html_table.replace('\n','')
 
-    browser.quit()
+	scraped_data['html_table_str'] = html_table_str
 
-    return scraped_data
+
+	#### Mars Hemispheres
+	url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
+	browser.visit(url)
+
+	html = browser.html
+	soup = bs(html,'html.parser')
+
+	results = soup.find_all('div',class_='description')
+
+	base = 'https://astrogeology.usgs.gov'
+
+	hemisphere_image_urls = []
+	for result in results:
+		holder = {}
+		if (result.a):
+			if (result.a.text):
+				holder['title'] = result.a.text[:-9]
+
+			browser.visit(base + result.a['href'])
+
+			html = browser.html
+			soup = bs(html,'html.parser')
+			downloads = soup.find('div',class_='downloads')
+			holder['img_url'] = downloads.find('li').a['href']
+
+		hemisphere_image_urls.append(holder)
+
+	scraped_data['hemisphere_image_urls'] = hemisphere_image_urls
+
+	browser.quit()
+
+	return scraped_data
