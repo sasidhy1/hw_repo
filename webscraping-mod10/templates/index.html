@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<meta http-equiv='X-UA-Compatible' content='ie=edge'>
+	<title>Mars Scrape</title>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='style.css') }}">
+	<script src='https://d3js.org/d3.v5.min.js'></script>
+
+</head>
+<body>
+	{% for record in mars_data %}
+
+	<div class='container'>
+		<div class='jumbotron text-center'>
+			<h1>Mission to Mars</h1>
+			<p><a class='btn btn-primary btn-lg' href='/scrape' role='button'>Scrape New Data</a></p>
+		</div>
+
+		<div class='row'>
+			<div class='col-md-12'>
+				<h3>Latest Mars News</h3>
+				<hr>
+				<h4>{{ record.news_title }}</h4>
+				<p>{{ record.news_p }}</p>
+			</div>
+		</div>
+
+		<div class='row'>
+			<div class='col-md-12'>
+				<h3>Featured Mars Image</h3>
+				<hr>
+			</div>
+			<div class='col-md-7'>
+				<img src="{{ record.featured_image_url }}" class='img-responsive'>
+			</div>
+			<div class='col-md-5'>
+				<div class='row'>
+					<div class='col-md-12'>
+						<div class='panel panel-default'>
+							<div class='panel-body'>
+								<h4>Current Weather on Mars</h4>
+								<p>{{ record.mars_weather }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='row'>
+					<div class='col-md-12'>
+						<h4 id='sm-center'>Mars Facts</h4>
+						{{ record.html_table_str|safe }}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class='row text-center'>
+			<br>
+			<h3>Mars Hemispheres</h3>
+			<hr>
+		</div>
+		<div class='row'>
+
+			{% for image in record.hemisphere_image_urls %}
+
+			<div class='col-md-6'>
+				<div class='thumbnail'>
+					<img src="{{ image.img_url }}">
+					<div class='caption'>
+						<h4>{{ image.title }}</h4>
+					</div>
+				</div>
+			</div>
+
+			{% endfor %}
+
+		</div>
+	</div>
+	{% endfor %}
+
+</body>
+
+	<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</html>
