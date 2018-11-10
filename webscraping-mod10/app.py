@@ -12,11 +12,18 @@ mongo = PyMongo(app, uri='mongodb://localhost:27017/mars_app')
 @app.route('/')
 def index():
 	print('Server received request.')
+
+	mars_data = mongo.db.collection.find()
+	
 	return render_template("index.html")
 
 @app.route('/scrape')
 def scrape():
 	scraped_data = scrape_mars.scrape()
+
+	mongo.db.collection.drop()
+	mongo.db.collection.insert_one(scraped_data)
+
 	return redirect('/',code=302)
 
 if __name__ == '__main__':
