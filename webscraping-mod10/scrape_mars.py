@@ -66,7 +66,9 @@ def scrape():
     tables = pd.read_html(url)
 
     df = tables[0]
-    df.head()
+
+    df.columns = ['Description','Value']
+    df.set_index('Description',inplace=True)
 
     html_table = df.to_html()
     html_table_str = html_table.replace('\n','')
