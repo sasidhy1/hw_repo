@@ -13,7 +13,7 @@ mongo = PyMongo(app, uri='mongodb://localhost:27017/mars_app')
 def index():
 	print('Server received request.')
 
-	mars_data = mongo.db.collection.find()
+	mars_data = mongo.db.collection.find_one()
 	
 	return render_template('index.html',mars_data=mars_data)
 
