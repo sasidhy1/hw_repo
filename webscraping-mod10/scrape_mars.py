@@ -96,14 +96,18 @@ def scrape():
 	#### Mars Facts ####
 	####################
 
+	# grab html tables from target site
 	url = 'https://space-facts.com/mars/'
 	tables = pd.read_html(url)
 
+	# grab first (only) table
 	df = tables[0]
 
+	# rename columns, set index inplace
 	df.columns = ['Description','Value']
 	df.set_index('Description',inplace=True)
 
+	# generate html table string
 	html_table = df.to_html()
 	html_table_str = html_table.replace('\n','')
 
