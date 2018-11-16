@@ -11,7 +11,9 @@ submit.on('click', function() {
 
 	var inputValue = inputElement.property('value');
 
-	console.log(inputValue);
+	var filteredData = data.filter(entry => entry.datetime == inputValue);
+
+	console.log(filteredData);
 }
 
 
