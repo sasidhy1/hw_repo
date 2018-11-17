@@ -6,13 +6,24 @@ var arr = ['#datetime','#city','#state','#country','#shape'];
 // select filter button
 var submit = d3.select('#filter-btn');
 
+// display original data
+data.forEach(entry => {
+	var newRow = d3.select('.table-data').append('tr');
+
+	// enter table data for each value
+	Object.values(entry).forEach(value => {
+		newRow.append('td').text(value);
+	});
+
+});
+
 submit.on('click', function() {
 
 	// prevent form reset
 	d3.event.preventDefault();
 
 	// clear table before query
-	d3.select('.table-data>tr').remove();
+	d3.selectAll('tr').remove();
 
 	arr.forEach(filterType => {
 	
