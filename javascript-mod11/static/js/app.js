@@ -3,21 +3,18 @@ var tableData = data;
 
 var arr = ['#datetime','#city','#state','#country','#shape'];
 
-// select filter button
-var submit = d3.select('#filter-btn');
+function displayData(data) {
+	data.forEach(entry => {
+		var newRow = d3.select('.table-data').append('tr');
 
-// display original data
-data.forEach(entry => {
-	var newRow = d3.select('.table-data').append('tr');
-
-	// enter table data for each value
-	Object.values(entry).forEach(value => {
-		newRow.append('td').text(value);
+		// enter table data for each value
+		Object.values(entry).forEach(value => {
+			newRow.append('td').text(value);
+		});
 	});
+}
 
-});
-
-submit.on('click', function() {
+function submitHandler() {
 
 	// prevent form reset
 	d3.event.preventDefault();
@@ -37,18 +34,14 @@ submit.on('click', function() {
 		var filteredData = data.filter(entry => entry[filterType.slice(1)] == inputValue);
 
 		// create new row for each entry
-		filteredData.forEach(entry => {
-			var newRow = d3.select('.table-data').append('tr');
-
-			// enter table data for each value
-			Object.values(entry).forEach(value => {
-				newRow.append('td').text(value);
-			});
-
-		});
-		
+		displayData(filteredData);
 	});
+}
 
-});
+// select filter button
+var submit = d3.select('#filter-btn');
 
+// display original data
+displayData(data);
 
+submit.on('click', submitHandler);
