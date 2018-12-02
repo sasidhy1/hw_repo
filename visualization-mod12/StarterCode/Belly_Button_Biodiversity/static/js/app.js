@@ -19,21 +19,33 @@ function buildCharts(sample) {
 
   d3.json(`/samples/${sample}`).then(response => {
     
-    otu_ids_ten = response.otu_ids.slice(0,10)
-    sample_values_ten = response.sample_values.slice(0,10)
-    otu_labels_ten = response.otu_labels.slice(0,10)
-
     // PIE CHART
     var trace1 = {
-      labels: otu_ids_ten,
-      values: sample_values_ten,
-      text: otu_labels_ten,
+      labels: response.otu_ids.slice(0,10),
+      values: response.sample_values.slice(0,10),
+      text: response.otu_labels.slice(0,10),
       type: 'pie'
     };
 
     var data1 = [trace1];
 
     Plotly.newPlot('pie', data1)
+
+    // BUBBLE CHART
+    var trace2 = {
+      x: response.otu_ids,
+      y: response.sample_values,
+      text: response.otu_labels,
+      mode: 'markers',
+      marker: {
+        color: response.otu_ids,
+        size: response.sample_values
+      }
+    }
+
+    var data2 = [trace2];
+
+    Plotly.newPlot('bubble', data2);
 
   });
 }
