@@ -1,18 +1,22 @@
 function buildMetadata(sample) {
 
-  // @TODO: Complete the following function that builds the metadata panel
+  // BUILD METADATA
+  // Use `.html("") to clear any existing metadata
+  var metaData = d3.select("#sample-metadata").html('');
 
   // Use `d3.json` to fetch the metadata for a sample
-    // Use d3 to select the panel with id of `#sample-metadata`
+  // Populate panel with each key and value object pair
+  d3.json(`/metadata/${sample}`).then((metadata) => {
+    Object.entries(metadata).forEach(([key,value]) => {
+        metaData
+        .append("p")
+        .append("b")
+        .text(`${key.toUpperCase()}: ${value}`)
+    });
+  });
 
-    // Use `.html("") to clear any existing metadata
-
-    // Use `Object.entries` to add each key and value pair to the panel
-    // Hint: Inside the loop, you will need to use d3 to append new
-    // tags for each key-value in the metadata.
-
-    // BONUS: Build the Gauge Chart
-    // buildGauge(data.WFREQ);
+  // BONUS: Build the Gauge Chart
+  // buildGauge(data.WFREQ);
 }
 
 function buildCharts(sample) {
@@ -59,7 +63,7 @@ function init() {
     sampleNames.forEach((sample) => {
       selector
         .append("option")
-        .text(sample)
+        .text(`BB_${sample}`)
         .property("value", sample);
     });
 
