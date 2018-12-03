@@ -28,7 +28,7 @@ trace1 = {
   y:[0],
   marker: { size: 28, color:'850000' },
   showlegend: false,
-  name: 'speed',
+  name: 'Freq',
   text: wfreq,
   hoverinfo: 'text+name'
 }
@@ -127,14 +127,15 @@ function buildCharts(sample) {
     var trace1 = {
       labels: response.otu_ids.slice(0,10),
       values: response.sample_values.slice(0,10),
-      text: response.otu_labels.slice(0,10),
+      hovertext: response.otu_labels.slice(0,10),
+      hoverinfo: 'label+value+text+percent',
       type: 'pie'
     };
 
     var data1 = [trace1];
 
     var layout = {
-      title: '<b>Top Ten Belly Button Samples</b>',
+      title: '<b>Top 10 Belly Button Samples</b>'
     };
 
     Plotly.newPlot('pie', data1, layout)
@@ -153,7 +154,13 @@ function buildCharts(sample) {
 
     var data2 = [trace2];
 
-    Plotly.newPlot('bubble', data2);
+    var layout = {
+      title: '<b>Belly Button Samples Collected</b><br>Listed by ID',
+      xaxis: { title: 'OTU ID' },
+      yaxis: { title: '# of Samples' }
+    };
+
+    Plotly.newPlot('bubble', data2, layout);
 
   });
 }
