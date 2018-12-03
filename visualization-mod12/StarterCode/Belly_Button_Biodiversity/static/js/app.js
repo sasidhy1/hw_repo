@@ -1,3 +1,101 @@
+function buildGauge(wfreq) {
+
+var scaledFreq = d3.scaleLinear()
+  .domain([0, 9])
+  .range([0, 180]);
+
+// Enter a speed between 0 and 180
+var level = scaledFreq(wfreq);
+
+// Trig to calc meter point
+var degrees = 180 - level,
+     radius = .5;
+var radians = degrees * Math.PI / 180;
+var x = radius * Math.cos(radians);
+var y = radius * Math.sin(radians);
+
+// Path: may have to change to create a better triangle
+var mainPath = 'M -.0 -0.025 L .0 0.025 L ',
+     pathX = String(x),
+     space = ' ',
+     pathY = String(y),
+     pathEnd = ' Z';
+var path = mainPath.concat(pathX,space,pathY,pathEnd);
+
+trace1 = {
+  type: 'scatter',
+  x: [0],
+  y:[0],
+  marker: { size: 28, color:'850000' },
+  showlegend: false,
+  name: 'speed',
+  text: wfreq,
+  hoverinfo: 'text+name'
+}
+
+trace2 = {
+  values: [20/9, 20/9, 20/9, 20/9, 20/9, 20/9, 20/9, 20/9, 20/9, 20],
+  rotation: 90,
+  text: [
+    '8-9',
+    '7-8',
+    '6-7',
+    '5-6',
+    '4-5',
+    '3-4',
+    '2-3',
+    '1-2',
+    '0-1',
+    '' ],
+  textinfo: 'text',
+  textposition:'inside',
+  marker: { colors: [
+    '#84B589',
+    '#91BE8C',
+    '#A2C694',
+    '#B4CE9D',
+    '#C5D5A7',
+    '#D6DCB1',
+    '#E5E3C0',
+    '#F0EAD8',
+    '#F8F3EC',
+    '#FFFFFF' ]},
+  labels: [
+    '8-9',
+    '7-8',
+    '6-7',
+    '5-6',
+    '4-5',
+    '3-4',
+    '2-3',
+    '1-2',
+    '0-1',
+    '' ],
+  hoverinfo: 'label',
+  hole: .5,
+  type: 'pie',
+  showlegend: false
+}
+
+var data = [trace1, trace2];
+
+var layout = {
+  shapes: [{
+      type: 'path',
+      path: path,
+      fillcolor: '850000',
+      line: { color: '850000' } }],
+  title: '<b>Belly Button Washing Frequency</b><br>Scrubs per Week',
+  xaxis: {zeroline:false, showticklabels:false,
+             showgrid: false, range: [-1, 1]},
+  yaxis: {zeroline:false, showticklabels:false,
+             showgrid: false, range: [-1, 1]}
+};
+
+Plotly.newPlot('gauge', data, layout);
+
+}
+
 function buildMetadata(sample) {
 
   // BUILD METADATA
@@ -13,10 +111,12 @@ function buildMetadata(sample) {
         .append("b")
         .text(`${key.toUpperCase()}: ${value}`)
     });
+
+  // GAUGE CHART
+  buildGauge(metadata.WFREQ);
+
   });
 
-  // BONUS: Build the Gauge Chart
-  // buildGauge(data.WFREQ);
 }
 
 function buildCharts(sample) {
@@ -33,7 +133,11 @@ function buildCharts(sample) {
 
     var data1 = [trace1];
 
-    Plotly.newPlot('pie', data1)
+    var layout = {
+      title: '<b>Top Ten Belly Button Samples</b>',
+    };
+
+    Plotly.newPlot('pie', data1, layout)
 
     // BUBBLE CHART
     var trace2 = {
@@ -73,6 +177,7 @@ function init() {
     buildMetadata(firstSample);
 
     console.log(firstSample);
+
   });
 }
 
