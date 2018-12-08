@@ -30,6 +30,19 @@ d3.csv(path, (error, data) => {
 	// log error if exists
 	if (error) return console.warn(error);
 	
+	// parse data
+	data.forEach(data => {
+		data.poverty = +data.poverty;
+		data.povertyMoe = +data.povertyMoe;
+		data.age = +data.age;
+		data.ageMoe = +data.ageMoe;
+		data.income = +data.income;
+		data.incomeMoe = +data.incomeMoe;
+		data.noHealthInsurance = +data.noHealthInsurance;
+		data.obesity = +data.obesity;
+		data.smokes = +data.smokes;
+	});
+	
 	// print data to console
 	console.log(data);
 
