@@ -135,36 +135,36 @@ d3.csv(path, (error, data) => {
 	var bottomAxis = d3.axisBottom(xLinearScale);
 	var leftAxis = d3.axisLeft(yLinearScale);
 
-	// append x axis
-	var xAxis = chartGroup.append("g")
-		.classed("x-axis", true)
-		.attr("transform", `translate(0, ${height})`)
+	// append SVG group for x-axis
+	var xAxis = chartGroup.append('g')
+		.classed('x-axis', true)
+		.attr('transform', `translate(0, ${height})`)
 		.call(bottomAxis);
 
-	// append y axis
-	var yAxis = chartGroup.append("g")
-		.classed("y-axis", true)
+	// append SVG group for y-axis
+	var yAxis = chartGroup.append('g')
+		.classed('y-axis', true)
 		.call(leftAxis);
 
-	// append initial circles
-	var circlesGroup = chartGroup.selectAll("circle")
+	// append group for datapoints
+	var datapoints = chartGroup.selectAll('g.datapoint')
 		.data(data)
 		.enter()
-		.append("circle")
-		.attr("cx", d => xLinearScale(d[chosenXAxis]))
-		.attr("cy", d => yLinearScale(d[chosenYAxis]))
-		.attr("r", 12)
-		.attr("stroke", "whitesmoke")
-		.attr("stroke-width", 1)
-		.attr("fill", "lightblue")
-		.attr("opacity", 0.95)
+		.append('g');
 
-	var abbrGroup = chartGroup.selectAll("text")
-		.data(data)
-		.enter()
-		.append("text")
-		.attr("x", d => xLinearScale(d[chosenXAxis]))
-		.attr("y", d => yLinearScale(d[chosenYAxis]) + 3)
+	// append circles to datapoints
+	var circlesGroup = datapoints.append('circle')
+		.attr('cx', d => xLinearScale(d[chosenXAxis]))
+		.attr('cy', d => yLinearScale(d[chosenYAxis]))
+		.attr('r', 12)
+		.attr('stroke', 'whitesmoke')
+		.attr('stroke-width', 1)
+		.attr('fill', 'lightblue');
+
+	// append text labels to datapoints
+	var abbrGroup = datapoints.append('text')
+		.attr('x', d => xLinearScale(d[chosenXAxis]))
+		.attr('y', d => yLinearScale(d[chosenYAxis]) + 3)
 		.attr('fill','white')
 		.attr('font-weight','bold')
 		.attr('font-size',10)
