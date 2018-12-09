@@ -42,7 +42,6 @@ function renderYAxes(newYScale, yAxis) {
 // function used for updating circles group with a transition to
 // new circles
 function renderXCircles(circlesGroup, newXScale, chosenXaxis) {
-
 	circlesGroup.transition()
 		.duration(1000)
 		.attr("cx", d => newXScale(d[chosenXAxis]));
@@ -53,12 +52,27 @@ function renderXCircles(circlesGroup, newXScale, chosenXaxis) {
 // function used for updating circles group with a transition to
 // new circles
 function renderYCircles(circlesGroup, newYScale, chosenYaxis) {
-
 	circlesGroup.transition()
 		.duration(1000)
 		.attr("cy", d => newYScale(d[chosenYAxis]));
 
 	return circlesGroup;
+}
+
+function renderXAbbr(abbrGroup, newXScale, chosenXAxis) {
+	abbrGroup.transition()
+		.duration(1000)
+		.attr("x", d => newXScale(d[chosenXAxis]));
+
+	return abbrGroup;
+}
+
+function renderYAbbr(abbrGroup, newYScale, chosenYAxis) {
+	abbrGroup.transition()
+		.duration(1000)
+		.attr("y", d => newYScale(d[chosenYAxis]) + 3);
+
+	return abbrGroup;
 }
 
 // function used for updating circles group with new tooltip
@@ -174,6 +188,18 @@ d3.csv(path, (error, data) => {
 		.attr("fill", "lightblue")
 		.attr("opacity", 0.95)
 
+	var abbrGroup = chartGroup.selectAll("text")
+		.data(data)
+		.enter()
+		.append("text")
+		.attr("x", d => xLinearScale(d[chosenXAxis]))
+		.attr("y", d => yLinearScale(d[chosenYAxis]) + 3)
+		.attr('fill','white')
+		.attr('font-weight','bold')
+		.attr('font-size',10)
+		.attr('text-anchor','middle')
+		.text(d => d.abbr);
+
 	// Create group for	3 x-axis labels
 	var xLabelsGroup = chartGroup.append("g")
 		.attr("transform", `translate(${width / 2}, ${height + 20})`);
@@ -255,6 +281,9 @@ d3.csv(path, (error, data) => {
 				// updates circles with new x values
 				circlesGroup = renderXCircles(circlesGroup, xLinearScale, chosenXAxis);
 
+				// add text labels
+				abbrGroup = renderXAbbr(abbrGroup, xLinearScale, chosenXAxis)
+
 				// updates tooltips with new info
 				circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
 
@@ -314,6 +343,9 @@ d3.csv(path, (error, data) => {
 
 				// updates circles with new y values
 				circlesGroup = renderYCircles(circlesGroup, yLinearScale, chosenYAxis);
+
+				// add text labels
+				abbrGroup = renderYAbbr(abbrGroup, yLinearScale, chosenYAxis)
 
 				// updates tooltips with new info
 				circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
