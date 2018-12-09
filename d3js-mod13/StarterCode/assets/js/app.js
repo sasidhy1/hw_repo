@@ -53,25 +53,24 @@ function renderAbbr(abbrGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
 function updateToolTip(chosenXAxis, circlesGroup) {
 
 	if (chosenXAxis === "poverty") {
-		var label = "Poverty %:";
+		var label = "Poverty";
 	} else if (chosenXAxis === "age") {
-		var label = "Median age:";
+		var label = "Age";
 	} else {
-		var label = "Household Income:";
+		var label = "Income";
 	}
 
 	var toolTip = d3.tip()
 		.attr("class", "tooltip")
 		.offset([80, -60])
 		.html(function(d) {
-			return (`${d.state}<br>${label}: ${d[chosenXAxis]}`);
+			return (`${d.state}<br>${label}: ${d[chosenXAxis]}%<br>Obesity: ${d.obesity}%`);
 		});
 
 	circlesGroup.call(toolTip);
 
-	// call with 'this' to hover tool tip over data
 	circlesGroup.on("mouseover", function(data) {
-		toolTip.show(data, this);
+		toolTip.show(data, this);		// special this?
 	})
 		// onmouseout event
 		.on("mouseout", function(data, index) {
