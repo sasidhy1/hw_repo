@@ -59,8 +59,9 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 
 	circlesGroup.call(toolTip);
 
+	// call with 'this' to hover tool tip over data
 	circlesGroup.on("mouseover", function(data) {
-		toolTip.show(data);
+		toolTip.show(data, this);
 	})
 		// onmouseout event
 		.on("mouseout", function(data, index) {
@@ -206,5 +207,8 @@ d3.csv(path, (error, data) => {
 		.classed("axis-text", true)
 		.classed("inactive", true)
 		.text("Lacks Healthcare (%)");
+
+	// updateToolTip function above csv import
+	var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
 
 });
