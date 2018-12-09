@@ -123,6 +123,10 @@ var svg = d3
 	.attr("width", svgWidth)
 	.attr("height", svgHeight);
 
+// append SVG group
+var chartGroup = svg.append('g')
+	.attr('transform', `translate(${margin.left}, ${margin.top})`);
+
 //////////////////
 // LOAD DATASET //
 //////////////////
