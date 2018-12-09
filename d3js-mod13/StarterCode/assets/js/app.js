@@ -11,26 +11,20 @@ function linearScales(data, chosenXAxis, chosenYAxis) {
 	return [xLinearScale, yLinearScale];
 }
 
-// function used for updating xAxis var upon click on axis label
-function renderXAxes(newXScale, xAxis) {
+// function used for rendering axes on clicking axis labels
+function renderAxes(newXScale, newYScale, xAxis, yAxis) {
 	var bottomAxis = d3.axisBottom(newXScale);
+	var leftAxis = d3.axisLeft(newYScale);
 
 	xAxis.transition()
 		.duration(1000)
 		.call(bottomAxis);
 
-	return xAxis;
-}
-
-// function used for updating yAxis var upon click on axis label
-function renderYAxes(newYScale, yAxis) {
-	var leftAxis = d3.axisLeft(newYScale);
-
 	yAxis.transition()
 		.duration(1000)
 		.call(leftAxis);
 
-	return yAxis;
+	return [xAxis, yAxis];
 }
 
 // function used for updating circles group with a transition to
@@ -263,12 +257,9 @@ d3.csv(path, (error, data) => {
 
 				// console.log(chosenXAxis)
 
-				// functions here found above csv import
-				// updates x scale for new data
+				// update x-scale and x-axis transition for chosen x-axis
 				xLinearScale = linearScales(data, chosenXAxis, chosenYAxis)[0];
-
-				// updates x axis with transition
-				xAxis = renderXAxes(xLinearScale, xAxis);
+				xAxis = renderAxes(xLinearScale, yLinearScale, xAxis, yAxis)[0];
 
 				// updates circles with new x values
 				circlesGroup = renderXCircles(circlesGroup, xLinearScale, chosenXAxis);
@@ -326,12 +317,9 @@ d3.csv(path, (error, data) => {
 
 				// console.log(chosenYAxis)
 
-				// functions here found above csv import
-				// updates y scale for new data
+				// update y-scale and y-axis transition for chosen y-axis
 				yLinearScale = linearScales(data, chosenXAxis, chosenYAxis)[1];
-
-				// updates y axis with transition
-				yAxis = renderYAxes(yLinearScale, yAxis);
+				yAxis = renderAxes(xLinearScale, yLinearScale, xAxis, yAxis)[1];
 
 				// updates circles with new y values
 				circlesGroup = renderYCircles(circlesGroup, yLinearScale, chosenYAxis);
