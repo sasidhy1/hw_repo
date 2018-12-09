@@ -1,20 +1,14 @@
-// function used for updating x-scale var upon click on axis label
-function xScale(data, chosenXAxis) {
-	// create scales
+// function used for updating scales on clicking axis labels
+function linearScales(data, chosenXAxis, chosenYAxis) {
 	var xLinearScale = d3.scaleLinear()
 		.domain([d3.min(data, d => d[chosenXAxis]) * 0.8, d3.max(data, d => d[chosenXAxis]) * 1.2])
 		.range([0, width]);
 
-	return xLinearScale;
-}
-
-function yScale(data, chosenYAxis) {
-	// create scales
 	var yLinearScale = d3.scaleLinear()
 		.domain([d3.max(data, d => d[chosenYAxis]) * 1.2, d3.min(data, d => d[chosenYAxis]) * 0.8])
 		.range([0, height]);
 
-	return yLinearScale;
+	return [xLinearScale, yLinearScale];
 }
 
 // function used for updating xAxis var upon click on axis label
@@ -154,11 +148,9 @@ d3.csv(path, (error, data) => {
 	// print data to console
 	console.log(data);
 
-	// xLinearScale function above csv import
-	var xLinearScale = xScale(data, chosenXAxis);
-
-	// Create y scale function
-	var yLinearScale = yScale(data, chosenYAxis);
+	// create linear x/y-scale functions
+	var xLinearScale = linearScales(data, chosenXAxis, chosenYAxis)[0];
+	var yLinearScale = linearScales(data, chosenXAxis, chosenYAxis)[1];
 
 	// Create initial axis functions
 	var bottomAxis = d3.axisBottom(xLinearScale);
@@ -273,7 +265,7 @@ d3.csv(path, (error, data) => {
 
 				// functions here found above csv import
 				// updates x scale for new data
-				xLinearScale = xScale(data, chosenXAxis);
+				xLinearScale = linearScales(data, chosenXAxis, chosenYAxis)[0];
 
 				// updates x axis with transition
 				xAxis = renderXAxes(xLinearScale, xAxis);
@@ -336,7 +328,7 @@ d3.csv(path, (error, data) => {
 
 				// functions here found above csv import
 				// updates y scale for new data
-				yLinearScale = yScale(data, chosenYAxis);
+				yLinearScale = linearScales(data, chosenXAxis, chosenYAxis)[1];
 
 				// updates y axis with transition
 				yAxis = renderYAxes(yLinearScale, yAxis);
