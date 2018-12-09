@@ -277,14 +277,14 @@ d3.csv(path, (error, data) => {
 	// event listeners with color/size transitions
 	datapoints.selectAll('circle').on("mouseover", function() {
 		d3.select(this)
-			.transition()
+			.transition('turnRed')
 			.duration(500)
 			.attr("r", 15)
 			.attr("fill", "indianred");
 	})
 		.on("mouseout", function() {
 			d3.select(this)
-			.transition()
+			.transition('turnBack')
 			.duration(500)
 			.attr("r", 12)
 			.attr("fill", "lightblue");
@@ -293,13 +293,13 @@ d3.csv(path, (error, data) => {
 	// event listeners with text color transitions
 	datapoints.selectAll('text').on("mouseover", function() {
 		d3.select(this)
-			.transition()
+			.transition('textRed')
 			.duration(500)
 			.attr("fill", "indianred");
 	})
 		.on("mouseout", function() {
 			d3.select(this)
-			.transition()
+			.transition('textRevert')
 			.duration(500)
 			.attr("fill", "white");
 		});
