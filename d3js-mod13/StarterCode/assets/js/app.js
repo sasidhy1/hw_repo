@@ -56,32 +56,28 @@ function renderAbbr(abbrGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
 
 // function used for updating circles group with new tooltip
 function updateToolTip(chosenXAxis, chosenYAxis, datapoints) {
+
 	// update x-value in tooltip
-	if (chosenXAxis === 'poverty') {
-		var xlabel = 'Poverty';
-	} else if (chosenXAxis === 'age') {
-		var xlabel = 'Age';
-	} else {
-		var xlabel = 'Income';
-	}
+	if (chosenXAxis === 'poverty') 		{ var xlabel = 'Poverty'; }
+	else if (chosenXAxis === 'age') 	{ var xlabel = 'Age'; }
+	else 								{ var xlabel = 'Income'; }
 
 	// update y-value in tooltip
-	if (chosenYAxis === 'obesity') {
-		var ylabel = 'Obesity';
-	} else if (chosenYAxis === 'smokes') {
-		var ylabel = 'Smokes';
-	} else {
-		var ylabel = 'Healthcare';
-	}
+	if (chosenYAxis === 'obesity') 		{ var ylabel = 'Obesity'; }
+	else if (chosenYAxis === 'smokes') 	{ var ylabel = 'Smokes'; }
+	else 								{ var ylabel = 'Healthcare'; }
 
+	// display string based on datatype (percent vs. median)
 	var toolTip = d3.tip()
 		.attr('class', 'd3-tip')
 		.offset([-8, 0])
 		.html(d => {
 			if (chosenXAxis === 'age' || chosenXAxis === 'income') {
-				html = `<strong><u>${d.state}</u></strong><br>${xlabel}: ${d[chosenXAxis]}<br>${ylabel}: ${d[chosenYAxis]}%`
+				html = `<strong><u>${d.state}</u></strong><br>${xlabel}: ` +
+					`${d[chosenXAxis]}<br>${ylabel}: ${d[chosenYAxis]}%`
 			} else {
-				html = `<strong><u>${d.state}</u></strong><br>${xlabel}: ${d[chosenXAxis]}%<br>${ylabel}: ${d[chosenYAxis]}%`
+				html = `<strong><u>${d.state}</u></strong><br>${xlabel}: ` +
+					`${d[chosenXAxis]}%<br>${ylabel}: ${d[chosenYAxis]}%`
 			}
 			return html;
 		});
@@ -278,6 +274,36 @@ d3.csv(path, (error, data) => {
 	// EVENT LISTENERS //
 	/////////////////////
 
+	// Event listeners with color/size transitions
+	datapoints.selectAll('circle').on("mouseover", function() {
+		d3.select(this)
+			.transition()
+			.duration(500)
+			.attr("r", 15)
+			.attr("fill", "indianred");
+	})
+		.on("mouseout", function() {
+			d3.select(this)
+			.transition()
+			.duration(500)
+			.attr("r", 12)
+			.attr("fill", "lightblue");
+		});
+
+	// Event listeners with text color transitions
+	datapoints.selectAll('text').on("mouseover", function() {
+		d3.select(this)
+			.transition()
+			.duration(500)
+			.attr("fill", "indianred");
+	})
+		.on("mouseout", function() {
+			d3.select(this)
+			.transition()
+			.duration(500)
+			.attr("fill", "white");
+		});
+
 	function handlexLabel() {
 		// get value of selection
 		var value = d3.select(this).attr('value');
@@ -295,7 +321,6 @@ d3.csv(path, (error, data) => {
 			abbrGroup = renderAbbr(abbrGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis)
 
 			// update tooltips for chosen x-axis and new data
-	// update tooltips for chosen x/y-axis
 			datapoints = updateToolTip(chosenXAxis, chosenYAxis, datapoints);
 
 			// modify classes to indicate chosen x-axis
