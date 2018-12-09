@@ -151,4 +151,60 @@ d3.csv(path, (error, data) => {
 		.attr("fill", "lightblue")
 		.attr("opacity", 0.95)
 
+	// Create group for	3 x-axis labels
+	var xLabelsGroup = chartGroup.append("g")
+		.attr("transform", `translate(${width / 2}, ${height + 20})`);
+
+	var povertyLabel = xLabelsGroup.append("text")
+		.attr("x", 0)
+		.attr("y", 20)
+		.attr("value", "poverty") // value to grab for event listener
+		.classed("active", true)
+		.text("In Poverty (%)");
+
+	var ageLabel = xLabelsGroup.append("text")
+		.attr("x", 0)
+		.attr("y", 40)
+		.attr("value", "age") // value to grab for event listener
+		.classed("inactive", true)
+		.text("Age (Median)");
+
+	var incomeLabel = xLabelsGroup.append("text")
+		.attr("x", 0)
+		.attr("y", 60)
+		.attr("value", "income") // value to grab for event listener
+		.classed("inactive", true)
+		.text("Household Income (Median)");
+
+	// Create group for	3 y-axis labels
+	var yLabelsGroup = chartGroup.append("g")
+		.attr("transform", "rotate(-90)");
+
+	var obesityLabel = yLabelsGroup.append("text")
+		.attr("y", 0 - margin.left)
+		.attr("x", 0 - (height / 2))
+		.attr("dy", "1em")
+		.attr("value", "obesity") // value to grab for event listener
+		.classed("axis-text", true)
+		.classed("active", true)
+		.text("Obese (%)");
+
+	var smokesLabel = yLabelsGroup.append("text")
+		.attr("y", 20 - margin.left)
+		.attr("x", 0 - (height / 2))
+		.attr("dy", "1em")
+		.attr("value", "smokes") // value to grab for event listener
+		.classed("axis-text", true)
+		.classed("inactive", true)
+		.text("Smokes (%)");
+
+	var healthcareLabel = yLabelsGroup.append("text")
+		.attr("y", 40 - margin.left)
+		.attr("x", 0 - (height / 2))
+		.attr("dy", "1em")
+		.attr("value", "healthcare") // value to grab for event listener
+		.classed("axis-text", true)
+		.classed("inactive", true)
+		.text("Lacks Healthcare (%)");
+
 });
