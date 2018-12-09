@@ -210,7 +210,7 @@ d3.csv(path, (error, data) => {
 	// X-AXIS LABELS //
 	///////////////////
 
-	// Create group for	3 x-axis labels
+	// create group for	3 x-axis labels
 	var xLabelsGroup = chartGroup.append("g")
 		.attr("transform", `translate(${width / 2}, ${height + 20})`);
 
@@ -239,7 +239,7 @@ d3.csv(path, (error, data) => {
 	// Y-AXIS LABELS //
 	///////////////////
 
-	// Create group for	3 y-axis labels
+	// create group for	3 y-axis labels
 	var yLabelsGroup = chartGroup.append("g")
 		.attr("transform", "rotate(-90)");
 
@@ -274,7 +274,7 @@ d3.csv(path, (error, data) => {
 	// EVENT LISTENERS //
 	/////////////////////
 
-	// Event listeners with color/size transitions
+	// event listeners with color/size transitions
 	datapoints.selectAll('circle').on("mouseover", function() {
 		d3.select(this)
 			.transition()
@@ -290,7 +290,7 @@ d3.csv(path, (error, data) => {
 			.attr("fill", "lightblue");
 		});
 
-	// Event listeners with text color transitions
+	// event listeners with text color transitions
 	datapoints.selectAll('text').on("mouseover", function() {
 		d3.select(this)
 			.transition()
