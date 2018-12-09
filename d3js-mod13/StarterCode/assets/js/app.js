@@ -50,34 +50,48 @@ function renderAbbr(abbrGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) {
 }
 
 // function used for updating circles group with new tooltip
-function updateToolTip(chosenXAxis, circlesGroup) {
-
-	if (chosenXAxis === "poverty") {
-		var label = "Poverty";
-	} else if (chosenXAxis === "age") {
-		var label = "Age";
+function updateToolTip(chosenXAxis, chosenYAxis, datapoints) {
+	// update x-value in tooltip
+	if (chosenXAxis === 'poverty') {
+		var xlabel = 'Poverty';
+	} else if (chosenXAxis === 'age') {
+		var xlabel = 'Age';
 	} else {
-		var label = "Income";
+		var xlabel = 'Income';
+	}
+
+	// update y-value in tooltip
+	if (chosenYAxis === 'obesity') {
+		var ylabel = 'Obesity';
+	} else if (chosenYAxis === 'smokes') {
+		var ylabel = 'Smokes';
+	} else {
+		var ylabel = 'Healthcare';
 	}
 
 	var toolTip = d3.tip()
-		.attr("class", "tooltip")
-		.offset([80, -60])
-		.html(function(d) {
-			return (`${d.state}<br>${label}: ${d[chosenXAxis]}%<br>Obesity: ${d.obesity}%`);
+		.attr('class', 'd3-tip')
+		.offset([-8, 0])
+		.html(d => {
+			if (chosenXAxis === 'age' || chosenXAxis === 'income') {
+				html = `<strong><u>${d.state}</u></strong><br>${xlabel}: ${d[chosenXAxis]}<br>${ylabel}: ${d[chosenYAxis]}%`
+			} else {
+				html = `<strong><u>${d.state}</u></strong><br>${xlabel}: ${d[chosenXAxis]}%<br>${ylabel}: ${d[chosenYAxis]}%`
+			}
+			return html;
 		});
 
-	circlesGroup.call(toolTip);
+	datapoints.call(toolTip);
 
-	circlesGroup.on("mouseover", function(data) {
+	datapoints.on('mouseover', function(data) {
 		toolTip.show(data, this);		// special this?
 	})
 		// onmouseout event
-		.on("mouseout", function(data, index) {
+		.on('mouseout', function(data, index) {
 			toolTip.hide(data);
 		});
 
-	return circlesGroup;
+	return datapoints;
 }
 
 var svgWidth = 960;
@@ -171,6 +185,9 @@ d3.csv(path, (error, data) => {
 		.attr('text-anchor','middle')
 		.text(d => d.abbr);
 
+	// updateToolTip function above csv import
+	datapoints = updateToolTip(chosenXAxis, chosenYAxis, datapoints);
+
 	// Create group for	3 x-axis labels
 	var xLabelsGroup = chartGroup.append("g")
 		.attr("transform", `translate(${width / 2}, ${height + 20})`);
@@ -227,9 +244,6 @@ d3.csv(path, (error, data) => {
 		.classed("inactive", true)
 		.text("Lacks Healthcare (%)");
 
-	// updateToolTip function above csv import
-	var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
-
 	// x axis labels event listener
 	xLabelsGroup.selectAll("text")
 		.on("click", function() {
@@ -248,8 +262,8 @@ d3.csv(path, (error, data) => {
 				circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
 				abbrGroup = renderAbbr(abbrGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis)
 
-				// updates tooltips with new info
-				circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
+				// update tooltips for chosen x-axis and new data
+				datapoints = updateToolTip(chosenXAxis, chosenYAxis, datapoints);
 
 				// modify classes to indicate chosen x-axis
 				if (chosenXAxis === 'poverty') {
@@ -288,8 +302,8 @@ d3.csv(path, (error, data) => {
 				circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
 				abbrGroup = renderAbbr(abbrGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
 
-				// updates tooltips with new info
-				circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
+				// update tooltips for chosen y-axis and new data
+				datapoints = updateToolTip(chosenXAxis, chosenYAxis, datapoints);
 
 				// modify classes to indicate chosen y-axis
 				if (chosenYAxis === 'obesity') {
