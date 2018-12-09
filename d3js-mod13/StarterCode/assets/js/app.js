@@ -1,3 +1,8 @@
+
+///////////////////////
+////// FUNCTIONS //////
+///////////////////////
+
 // function used for updating scales on clicking axis labels
 function linearScales(data, chosenXAxis, chosenYAxis) {
 	var xLinearScale = d3.scaleLinear()
@@ -94,6 +99,10 @@ function updateToolTip(chosenXAxis, chosenYAxis, datapoints) {
 	return datapoints;
 }
 
+///////////////// 
+// SVG WRAPPER //
+///////////////// 
+
 var svgWidth = 960;
 var svgHeight = 500;
 
@@ -107,28 +116,29 @@ var margin = {
 var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
-// Create an SVG wrapper, append an SVG group that will hold our chart,
-// and shift the latter by left and top margins.
+// create SVG wrapper, shift by left and top margins
 var svg = d3
 	.select("#scatter")
 	.append("svg")
 	.attr("width", svgWidth)
 	.attr("height", svgHeight);
 
-// Append an SVG group
-var chartGroup = svg.append("g")
-	.attr("transform", `translate(${margin.left}, ${margin.top})`);
+//////////////////
+// LOAD DATASET //
+//////////////////
 
-var chosenXAxis = "poverty";	// age, income
-var chosenYAxis = "obesity";	// smokes, noHealthInsurance
+// Default view
+var chosenXAxis = 'poverty';	// age, income
+var chosenYAxis = 'obesity';	// smokes, healthcare
 
+// path to csv data
 path = 'assets/data/data.csv';
 d3.csv(path, (error, data) => {
 
 	// log error if exists
 	if (error) return console.warn(error);
 	
-	// parse data
+	// parse data, cast numeric data
 	data.forEach(data => {
 		data.poverty = +data.poverty;
 		data.age = +data.age;
@@ -149,6 +159,10 @@ d3.csv(path, (error, data) => {
 	var bottomAxis = d3.axisBottom(xLinearScale);
 	var leftAxis = d3.axisLeft(yLinearScale);
 
+	////////////////
+	// SVG GROUPS //
+	////////////////
+
 	// append SVG group for x-axis
 	var xAxis = chartGroup.append('g')
 		.classed('x-axis', true)
@@ -160,11 +174,15 @@ d3.csv(path, (error, data) => {
 		.classed('y-axis', true)
 		.call(leftAxis);
 
-	// append group for datapoints
+	// append SVG group for datapoints
 	var datapoints = chartGroup.selectAll('g.datapoint')
 		.data(data)
 		.enter()
 		.append('g');
+
+	////////////////
+	// DATAPOINTS //
+	////////////////
 
 	// append circles to datapoints
 	var circlesGroup = datapoints.append('circle')
@@ -185,8 +203,12 @@ d3.csv(path, (error, data) => {
 		.attr('text-anchor','middle')
 		.text(d => d.abbr);
 
-	// updateToolTip function above csv import
+	// update tooltips for chosen x/y-axis
 	datapoints = updateToolTip(chosenXAxis, chosenYAxis, datapoints);
+
+	/////////////////// 
+	// X-AXIS LABELS //
+	///////////////////
 
 	// Create group for	3 x-axis labels
 	var xLabelsGroup = chartGroup.append("g")
@@ -212,6 +234,10 @@ d3.csv(path, (error, data) => {
 		.attr("value", "income") // value to grab for event listener
 		.classed("inactive", true)
 		.text("Household Income (Median)");
+
+	/////////////////// 
+	// Y-AXIS LABELS //
+	///////////////////
 
 	// Create group for	3 y-axis labels
 	var yLabelsGroup = chartGroup.append("g")
@@ -244,6 +270,10 @@ d3.csv(path, (error, data) => {
 		.classed("inactive", true)
 		.text("Lacks Healthcare (%)");
 
+	/////////////////////
+	// EVENT LISTENERS //
+	/////////////////////
+
 	function handlexLabel() {
 		// get value of selection
 		var value = d3.select(this).attr('value');
@@ -261,6 +291,7 @@ d3.csv(path, (error, data) => {
 			abbrGroup = renderAbbr(abbrGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis)
 
 			// update tooltips for chosen x-axis and new data
+	// update tooltips for chosen x/y-axis
 			datapoints = updateToolTip(chosenXAxis, chosenYAxis, datapoints);
 
 			// modify classes to indicate chosen x-axis
