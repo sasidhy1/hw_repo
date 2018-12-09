@@ -83,10 +83,10 @@ function updateToolTip(chosenXAxis, chosenYAxis, datapoints) {
 
 	datapoints.call(toolTip);
 
+	// bugfix, make toolTip hover over marker
 	datapoints.on('mouseover', function(data) {
-		toolTip.show(data, this);		// special this?
+		toolTip.show(data, this);
 	})
-		// onmouseout event
 		.on('mouseout', function(data, index) {
 			toolTip.hide(data);
 		});
@@ -244,84 +244,88 @@ d3.csv(path, (error, data) => {
 		.classed("inactive", true)
 		.text("Lacks Healthcare (%)");
 
-	// x axis labels event listener
-	xLabelsGroup.selectAll("text")
-		.on("click", function() {
-			// get value of selection
-			var value = d3.select(this).attr("value");
-			if (value !== chosenXAxis) {
+	function handlexLabel() {
+		// get value of selection
+		var value = d3.select(this).attr('value');
 
-				// update chosen x-axis
-				chosenXAxis = value;
+		if (value !== chosenXAxis) {
+			// update chosen x-axis
+			chosenXAxis = value;
 
-				// update x-scale and x-axis transition for chosen x-axis
-				xLinearScale = linearScales(data, chosenXAxis, chosenYAxis)[0];
-				xAxis = renderAxes(xLinearScale, yLinearScale, xAxis, yAxis)[0];
+			// update x-scale and x-axis transition for chosen x-axis
+			xLinearScale = linearScales(data, chosenXAxis, chosenYAxis)[0];
+			xAxis = renderAxes(xLinearScale, yLinearScale, xAxis, yAxis)[0];
 
-				// update circle and text coordinates for new data
-				circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
-				abbrGroup = renderAbbr(abbrGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis)
+			// update circle and text coordinates for new data
+			circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
+			abbrGroup = renderAbbr(abbrGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis)
 
-				// update tooltips for chosen x-axis and new data
-				datapoints = updateToolTip(chosenXAxis, chosenYAxis, datapoints);
+			// update tooltips for chosen x-axis and new data
+			datapoints = updateToolTip(chosenXAxis, chosenYAxis, datapoints);
 
-				// modify classes to indicate chosen x-axis
-				if (chosenXAxis === 'poverty') {
-					povertyLabel.classed('active', true).classed('inactive', false);
-					ageLabel.classed('active', false).classed('inactive', true);
-					incomeLabel.classed('active', false).classed('inactive', true);
+			// modify classes to indicate chosen x-axis
+			if (chosenXAxis === 'poverty') {
+				povertyLabel.classed('active', true).classed('inactive', false);
+				ageLabel.classed('active', false).classed('inactive', true);
+				incomeLabel.classed('active', false).classed('inactive', true);
 
-				} else if (chosenXAxis === 'age') {
-					povertyLabel.classed('active', false).classed('inactive', true);
-					ageLabel.classed('active', true).classed('inactive', false);
-					incomeLabel.classed('active', false).classed('inactive', true);
+			} else if (chosenXAxis === 'age') {
+				povertyLabel.classed('active', false).classed('inactive', true);
+				ageLabel.classed('active', true).classed('inactive', false);
+				incomeLabel.classed('active', false).classed('inactive', true);
 
-				} else {
-					povertyLabel.classed('active', false).classed('inactive', true);
-					ageLabel.classed('active', false).classed('inactive', true);
-					incomeLabel.classed('active', true).classed('inactive', false);
-				}
+			} else {
+				povertyLabel.classed('active', false).classed('inactive', true);
+				ageLabel.classed('active', false).classed('inactive', true);
+				incomeLabel.classed('active', true).classed('inactive', false);
 			}
-		});
+		}
+	}
+
+	function handleyLabel() {
+		// get value of selection
+		var value = d3.select(this).attr('value');
+
+		if (value !== chosenYAxis) {
+			// update chosen y-axis
+			chosenYAxis = value;
+
+			// update y-scale and y-axis transition for chosen y-axis
+			yLinearScale = linearScales(data, chosenXAxis, chosenYAxis)[1];
+			yAxis = renderAxes(xLinearScale, yLinearScale, xAxis, yAxis)[1];
+
+			// update circle and text coordinates for new data
+			circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
+			abbrGroup = renderAbbr(abbrGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
+
+			// update tooltips for chosen y-axis and new data
+			datapoints = updateToolTip(chosenXAxis, chosenYAxis, datapoints);
+
+			// modify classes to indicate chosen y-axis
+			if (chosenYAxis === 'obesity') {
+				obesityLabel.classed('active', true).classed('inactive', false);
+				smokesLabel.classed('active', false).classed('inactive', true);
+				healthcareLabel.classed('active', false).classed('inactive', true);
+
+			} else if (chosenYAxis === 'smokes') {
+				obesityLabel.classed('active', false).classed('inactive', true);
+				smokesLabel.classed('active', true).classed('inactive', false);
+				healthcareLabel.classed('active', false).classed('inactive', true);
+
+			} else {
+				obesityLabel.classed('active', false).classed('inactive', true);
+				smokesLabel.classed('active', false).classed('inactive', true);
+				healthcareLabel.classed('active', true).classed('inactive', false);
+			}
+		}
+	}
+
+	// x axis labels event listener
+	xLabelsGroup.selectAll('text')
+		.on('click', handlexLabel);
 
 	// y axis labels event listener
-	yLabelsGroup.selectAll("text")
-		.on("click", function() {
-			// get value of selection
-			var value = d3.select(this).attr("value");
-			if (value !== chosenYAxis) {
-
-				// update chosen y-axis
-				chosenYAxis = value;
-
-				// update y-scale and y-axis transition for chosen y-axis
-				yLinearScale = linearScales(data, chosenXAxis, chosenYAxis)[1];
-				yAxis = renderAxes(xLinearScale, yLinearScale, xAxis, yAxis)[1];
-
-				// update circle and text coordinates for new data
-				circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
-				abbrGroup = renderAbbr(abbrGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
-
-				// update tooltips for chosen y-axis and new data
-				datapoints = updateToolTip(chosenXAxis, chosenYAxis, datapoints);
-
-				// modify classes to indicate chosen y-axis
-				if (chosenYAxis === 'obesity') {
-					obesityLabel.classed('active', true).classed('inactive', false);
-					smokesLabel.classed('active', false).classed('inactive', true);
-					healthcareLabel.classed('active', false).classed('inactive', true);
-
-				} else if (chosenYAxis === 'smokes') {
-					obesityLabel.classed('active', false).classed('inactive', true);
-					smokesLabel.classed('active', true).classed('inactive', false);
-					healthcareLabel.classed('active', false).classed('inactive', true);
-
-				} else {
-					obesityLabel.classed('active', false).classed('inactive', true);
-					smokesLabel.classed('active', false).classed('inactive', true);
-					healthcareLabel.classed('active', true).classed('inactive', false);
-				}
-			}
-		});
+	yLabelsGroup.selectAll('text')
+		.on('click', handleyLabel);
 
 });
