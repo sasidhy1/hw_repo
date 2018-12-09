@@ -99,8 +99,8 @@ function updateToolTip(chosenXAxis, chosenYAxis, datapoints) {
 // SVG WRAPPER //
 ///////////////// 
 
-var svgWidth = 960;
-var svgHeight = 500;
+var svgWidth = 1000;
+var svgHeight = 600;
 
 var margin = {
 	top: 20,
