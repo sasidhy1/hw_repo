@@ -15,16 +15,18 @@ function magColor(val) {
   return color;
 }
 
-var link = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
+var url1 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
+// var url2 = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_plates.json";
 
-d3.json(link, function(data) {
-  createFeatures(data.features);
+d3.json(url1, function(data) {
+  earthquakes = createFeatures(data.features);
 });
+
 
 function createFeatures(earthquakeData) {
 
   function onEachFeature(feature, layer) {
-    layer.bindPopup("<h3>" + feature.properties.place +
+    layer.bindPopup("<h3>" + feature.properties.mag + " Earthquake, " + feature.properties.place +
       "</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
   }
 
@@ -72,10 +74,10 @@ function createMap(earthquakes) {
   };
 
   var overlayMaps = {
-    Earthquakes: earthquakes
+    Earthquakes: earthquakes,
   };
 
-  var myMap = L.map("map", {
+  var map = L.map("map", {
 	center: [40, -100],
 	zoom: 4.1,
     layers: [streetmap, earthquakes]
@@ -83,5 +85,28 @@ function createMap(earthquakes) {
 
   L.control.layers(baseMaps, overlayMaps, {
     collapsed: false
-  }).addTo(myMap);
+  }).addTo(map);
+
+  // Set up the legend
+  var legend = L.control({ position: "bottomright" });
+  legend.onAdd = function() {
+    var div = L.DomUtil.create("div", "info legend");
+    var limits = [];
+    var labels = ["0-1","1-2","2-3","3-4","4-5","5+"];
+    
+    var legendInfo = "<p>Magnitude Scale</p>"
+
+    div.innerHTML = legendInfo;
+    
+    labels.forEach(function(label, index) {
+      limits.push("<li style=\"background-color: " + magColor(index) + "\">" + label + "</li>");
+    });
+    
+    div.innerHTML += "<ul>" + limits.join("") + "</ul>";
+    
+    return div;
+  };
+  
+  // Adding legend to the map
+  legend.addTo(map);
 }
