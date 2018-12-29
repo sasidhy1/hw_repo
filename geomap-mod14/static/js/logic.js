@@ -105,7 +105,9 @@ function createMap(earthquakes) {
 	var url = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json"
 
 	var boundary = d3.json(url, function(boundaryData) {
-		L.geoJson(boundaryData).addTo(map)
+		L.geoJson(boundaryData, {
+			style: { color: "#fff" }
+		}).addTo(map)
 	});
 
 	///////////////////
